@@ -25,7 +25,7 @@ public class Mainn {
 		cliente.listar();
 		
 		//mascota.verMascotas(1);
-		mascota2.verMascotas(2);
+		cliente.verMascotas(2);
 		//System.out.println(mascota.total());
 		
 		//System.out.println(cliente.buscarUltimo().getNombre());

@@ -2,9 +2,7 @@ package mascotas;
 
 public class centralMascota {
 
-	private Mascota primero;
-	
-	centralCliente cliente = new centralCliente();
+	public Mascota primero;
 
 	public void listar() {
 
@@ -36,7 +34,7 @@ public class centralMascota {
 		}
 
 	}
-	
+
 	public int total() {
 
 		int cont = 0;
@@ -49,23 +47,16 @@ public class centralMascota {
 		return cont;
 	}
 
-	public void verMascotas(int codigo) {
-
-		centralMascota actual = cliente.buscar(codigo).getMascota();
-		
-		for(int i = 0; i <= actual.total(); i++) {
-			
-			System.out.println(primero.getNombre());
-			primero = primero.getSiguienteMascota();
-			
-		}
-		
-	}
-	
 	public String toString() {
 		String mensaje = ("la mascota se llama " + primero.getNombre());
 		return mensaje;
+
+	}
+	
+	public Mascota sig() {
 		
+		primero = primero.getSiguienteMascota();
+		return primero;
 	}
 
 }
