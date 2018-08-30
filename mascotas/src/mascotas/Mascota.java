@@ -16,52 +16,28 @@ public class Mascota {
 		this.color = color;
 	}
 
-	public int getIdentificacion() {
-		return identificacion;
-	}
+	public int getIdentificacion() {return identificacion;}
 
-	public void setIdentificacion(int identificacion) {
-		this.identificacion = identificacion;
-	}
+	public void setIdentificacion(int identificacion) {this.identificacion = identificacion;}
 
-	public String getNombre() {
-		return nombre;
-	}
+	public String getNombre() {return nombre;}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	public void setNombre(String nombre) {this.nombre = nombre;}
 
-	public String getRaza() {
-		return raza;
-	}
+	public String getRaza() {return raza;}
 
-	public void setRaza(String raza) {
-		this.raza = raza;
-	}
+	public void setRaza(String raza) {this.raza = raza;}
 
-	public String getColor() {
-		return color;
-	}
+	public String getColor() {return color;}
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+	public void setColor(String color) {this.color = color;}
 
-	public Mascota getSiguienteMascota() {
-		return siguienteMascota;
-	}
+	public Mascota getSiguienteMascota() {return siguienteMascota;}
 
-	public void setSiguienteMascota(Mascota siguienteMascota) {
-		this.siguienteMascota = siguienteMascota;
-	}
+	public void setSiguienteMascota(Mascota siguienteMascota) {this.siguienteMascota = siguienteMascota;}
 
-	public Mascota getAnteriorMascota() {
-		return anteriorMascota;
-	}
+	public Mascota getAnteriorMascota() {return anteriorMascota;}
 
-	public void setAnteriorMascota(Mascota anteriorMascota) {
-		this.anteriorMascota = anteriorMascota;
-	}
+	public void setAnteriorMascota(Mascota anteriorMascota) {this.anteriorMascota = anteriorMascota;}
 
 }
