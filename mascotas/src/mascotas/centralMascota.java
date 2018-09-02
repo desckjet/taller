@@ -37,14 +37,14 @@ public class centralMascota {
 
 	public int total() {
 
-		int cont = 0;
+		int contador = 0;
 		Mascota actual = primero;
 
 		while (actual != null) {
-			cont++;
+			contador++;
 			actual = actual.getSiguienteMascota();
 		}
-		return cont;
+		return contador;
 	}
 
 	public String toString() {
@@ -52,6 +52,21 @@ public class centralMascota {
 		return mensaje;
 
 	}
+	//ubicar el numero de la fila que correspode a la tabla
+	public Mascota buscarPosicion(int posicion) {
+		if (posicion >= this.total()) {
+			return null;
+		}
+		int contador = 0;
+		Mascota actual = primero;
+		while (contador != posicion && actual != null) {
+			actual = actual.getSiguienteMascota();
+			contador++;
+		}
+		return actual;
+	}
+	
+
 	
 	public Mascota sig() {
 		

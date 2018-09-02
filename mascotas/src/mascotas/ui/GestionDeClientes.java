@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import mascotas.Mainn;
-import modelo.miModelo;
+import modelo.miModeloCliente;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -77,7 +77,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		tableClientes.setModel(new miModelo(Mainn.cliente));
+		tableClientes.setModel(new miModeloCliente(Mainn.cliente));
 		tableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				tableClientesMouseClicked(evt);

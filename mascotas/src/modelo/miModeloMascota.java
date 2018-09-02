@@ -4,24 +4,23 @@ import javax.swing.JOptionPane;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import mascotas.Cliente;
-import mascotas.centralCliente;
+import mascotas.Mascota;
+import mascotas.centralMascota;
 
-public class miModelo implements TableModel {
-	
-	private centralCliente lista;
-	private TableModelListener onAddListener; //pendiente de cuando hace una acción, cuando agrega algo va a hacer lo que tiene el listener
-	private TableModelListener onRemoveListener;
-	
-	
+public class miModeloMascota implements TableModel {
 
-	public miModelo(centralCliente lista) {
+	private centralMascota lista;
+	private TableModelListener onAddListenerMascota;
+	private TableModelListener onRemoveListenerMascota;
+
+	// constructor
+	public miModeloMascota(centralMascota lista) {
 		this.lista = lista;
 	}
 
 	@Override
 	public int getRowCount() {
-		return lista.longitud();
+		return lista.total();
 	}
 
 	@Override
@@ -31,22 +30,24 @@ public class miModelo implements TableModel {
 
 	@Override
 	public String getColumnName(int columnIndex) {
+
 		switch (columnIndex) {
 		case 0:
 			return "IDENTIFICACIÓN";
 		case 1:
 			return "Nombre";
 		case 2:
-			return "Dirección";
+			return "Raza";
 		case 3:
-			return "Teléfono";
+			return "Color";
 		default:
 			return null;
 		}
 	}
 
-	@Override //lo que tengo ahi el tipo de dato
+	@Override
 	public Class<?> getColumnClass(int columnIndex) {
+
 		switch (columnIndex) {
 		case 0:
 			return Integer.class;
@@ -55,48 +56,49 @@ public class miModelo implements TableModel {
 		case 2:
 			return String.class;
 		case 3:
-			return Integer.class;
+			return String.class;
 		default:
 			return null;
 		}
 	}
 
-	@Override //noooo es editable
+	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
 	}
 
-	@Override //obtener el valor que hay en esa posicion
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Cliente cliente = lista.buscarPosicion(rowIndex);
+		Mascota mascota = lista.buscarPosicion(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			return cliente.getIdentificacion();
+			return mascota.getIdentificacion();
 		case 1:
-			return cliente.getNombre();
+			return mascota.getNombre();
 		case 2:
-			return cliente.getDireccion();
+			return mascota.getRaza();
 		case 3:
-			return cliente.getTelefono();
+			return mascota.getColor();
 		default:
 			return null;
 		}
 	}
-	@Override//Asignar los valores
+
+	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		Cliente cliente = lista.buscarPosicion(rowIndex);
+		Mascota mascota = lista.buscarPosicion(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			cliente.setIdentificacion(Integer.valueOf((Integer)aValue));
+			mascota.setIdentificacion(Integer.valueOf((Integer)aValue));
 			break;
 		case 1:
-			cliente.setNombre(String.valueOf(aValue));
+			mascota.setNombre(String.valueOf(aValue));
 			break;
 		case 2:
-			cliente.setDireccion(String.valueOf(aValue)); 
+			mascota.setRaza(String.valueOf(aValue)); 
 			break;
 		case 3:
-			cliente.setTelefono(Integer.valueOf((Integer)aValue));
+			mascota.setColor(String.valueOf(aValue));
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Lo que intenta ingresar no corresponde a ningun campo.");
@@ -105,10 +107,12 @@ public class miModelo implements TableModel {
 
 	@Override
 	public void addTableModelListener(TableModelListener l) {
-		this.onAddListener = l;}
+		this.onAddListenerMascota = l;
+	}
 
 	@Override
 	public void removeTableModelListener(TableModelListener l) {
-		this.onRemoveListener = l;}
+		this.onRemoveListenerMascota = l;
+	}
 
 }

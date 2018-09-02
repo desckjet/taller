@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import mascotas.Mainn;
+import modelo.miModeloMascota;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
@@ -62,17 +66,7 @@ public class GestionDeMascotas extends JFrame {
 
         BtnEliminarMascota.setText("Eliminar");
 
-        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Identificación", "Nombre", "Raza", "Color"
-            }
-        ));
+        tableClientes.setModel(new miModeloMascota(Mainn.mascota));
         tableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableClientesMouseClicked(evt);
