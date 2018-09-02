@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import mascotas.Mainn;
+import modelo.miModelo;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -73,10 +77,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		tableClientes.setModel(new javax.swing.table.DefaultTableModel(
-				new Object[][] { { null, null, null, null }, { null, null, null, null }, { null, null, null, null },
-						{ null, null, null, null } },
-				new String[] { "Identificación", "Nombre", "Apellido", "Teléfono" }));
+		tableClientes.setModel(new miModelo(Mainn.cliente));
 		tableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				tableClientesMouseClicked(evt);

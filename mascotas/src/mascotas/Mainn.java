@@ -3,13 +3,12 @@ package mascotas;
 import mascotas.ui.MenuPrincipal;
 
 public class Mainn {
+	//Se crean globales para que no se vayan a perder
+	public static centralCliente cliente = new centralCliente();
+	public static centralMascota mascota = new centralMascota();
+	public static centralMascota mascota2 = new centralMascota();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		centralCliente cliente = new centralCliente();
-		centralMascota mascota = new centralMascota();
-		centralMascota mascota2 = new centralMascota();
 		
 		mascota.insertarAlFinal(new Mascota(1,"humo","malamute","rojo"));
 		mascota.insertarAlFinal(new Mascota(2,"carbon","murcielago","verde"));
@@ -28,9 +27,7 @@ public class Mainn {
 		
 		//mascota.verMascotas(1);
 		cliente.verMascotas(2);
-		//System.out.println(mascota.total());
 		
-		//System.out.println(cliente.buscarUltimo().getNombre());
 		new MenuPrincipal().setVisible(true);
 	}
 

@@ -68,6 +68,29 @@ public class centralCliente {
 
 		return actual;
 	}
+	
+	public Cliente buscarPosicion(int posicion) {
+		if (posicion >= this.longitud()) {
+			return null;
+		}
+		int contador = 0;
+		Cliente actual = primero;
+		while (contador != posicion && actual != null) {
+			actual = actual.getSiguienteCliente();
+			contador++;
+		}
+		return actual;
+	}
+	
+	public int longitud() {
+		int contador = 0;
+		Cliente actual = primero;
+		while (actual != null) {
+			actual = actual.getSiguienteCliente();
+			contador++;
+		}
+		return contador;
+	}
 
 	public void verMascotas(int codigo) {
 
