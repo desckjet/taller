@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
+import java.awt.Font;
 
 public class MenuPrincipal extends JFrame {
 
@@ -50,6 +51,7 @@ public class MenuPrincipal extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnGestionarCliente = new JButton("GESTIONAR CLIENTE");
+		btnGestionarCliente.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
 		btnGestionarCliente.setToolTipText("Opcion para gestionar un cliente");
 		btnGestionarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

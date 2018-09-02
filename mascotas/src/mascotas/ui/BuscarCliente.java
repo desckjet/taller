@@ -4,8 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class BuscarCliente extends JFrame {
 
@@ -16,6 +23,8 @@ public class BuscarCliente extends JFrame {
      * Creates new form BuscarCliente
      */
     public BuscarCliente() {
+    	setTitle("BUSCAR CLIENTE");
+    	setType(Type.POPUP);
         initComponents();
     }
 
@@ -33,14 +42,25 @@ public class BuscarCliente extends JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtIdentificacionClienteBuscar = new javax.swing.JTextField();
         btnBuscarCliente = new javax.swing.JButton();
+        btnBuscarCliente.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showConfirmDialog(null, "El usuario existe");
+        	}
+        });
         btnCancelarBuscarCliente = new javax.swing.JButton();
+        btnCancelarBuscarCliente.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new GestionDeClientes().setVisible(true);
+        		BuscarCliente.this.dispose();
+        	}
+        });
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel1.setText("Identificación:");
+        jLabel1.setText("Identificación del cliente a buscar:");
 
         btnBuscarCliente.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         btnBuscarCliente.setText("Buscar");
@@ -49,42 +69,39 @@ public class BuscarCliente extends JFrame {
         btnCancelarBuscarCliente.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtIdentificacionClienteBuscar)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 211, Short.MAX_VALUE)
-                .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(44, 44, 44)
-                    .addComponent(btnCancelarBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(211, Short.MAX_VALUE)))
+        	jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addGap(0, 211, Short.MAX_VALUE)
+        			.addComponent(btnBuscarCliente, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+        			.addGap(44))
+        		.addGroup(Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+        			.addGap(44)
+        			.addComponent(btnCancelarBuscarCliente, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(211, Short.MAX_VALUE))
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addComponent(txtIdentificacionClienteBuscar, 356, 356, 356)
+        			.addContainerGap())
+        		.addGroup(Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+        			.addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtIdentificacionClienteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(166, Short.MAX_VALUE)
-                    .addComponent(btnCancelarBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        			.addContainerGap(44, Short.MAX_VALUE)
+        			.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(txtIdentificacionClienteBuscar, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+        			.addGap(18)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(btnBuscarCliente, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnCancelarBuscarCliente, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap())
         );
+        jPanel1.setLayout(jPanel1Layout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

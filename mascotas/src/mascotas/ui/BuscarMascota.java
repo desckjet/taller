@@ -4,8 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class BuscarMascota extends JFrame {
 
@@ -15,6 +19,8 @@ public class BuscarMascota extends JFrame {
      * Creates new form BuscarMascota
      */
     public BuscarMascota() {
+    	setTitle("BUSCAR MASCOTA");
+    	setType(Type.POPUP);
         initComponents();
     }
 
@@ -30,7 +36,18 @@ public class BuscarMascota extends JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtIdentificacionMascotaBuscar = new javax.swing.JTextField();
         btnBuscarMascota = new javax.swing.JButton();
+        btnBuscarMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showConfirmDialog(null, "La mascota si existe");
+        	}
+        });
         btnCancelarBuscarMascota = new javax.swing.JButton();
+        btnCancelarBuscarMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new GestionDeMascotas().setVisible(true);
+        		BuscarMascota.this.dispose();
+        	}
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

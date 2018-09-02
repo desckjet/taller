@@ -1,5 +1,7 @@
 package mascotas;
 
+import mascotas.ui.MenuPrincipal;
+
 public class Mainn {
 
 	public static void main(String[] args) {
@@ -29,6 +31,7 @@ public class Mainn {
 		//System.out.println(mascota.total());
 		
 		//System.out.println(cliente.buscarUltimo().getNombre());
+		new MenuPrincipal().setVisible(true);
 	}
 
 }

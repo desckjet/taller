@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
+import java.awt.Font;
 
 public class GestionDeMascotas extends JFrame {
 
@@ -15,6 +19,9 @@ public class GestionDeMascotas extends JFrame {
      * Creates new form GestionDeMascotas
      */
     public GestionDeMascotas() {
+    	setFont(new Font("Comic Sans MS", Font.BOLD, 12));
+    	setType(Type.POPUP);
+    	setTitle("GESTIÓN DE MASCOTAS");
         initComponents();
     }
 
@@ -28,10 +35,28 @@ public class GestionDeMascotas extends JFrame {
     private void initComponents() {
 
         BtnEliminarMascota = new javax.swing.JButton();
+        BtnEliminarMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new EliminarMascota().setVisible(true);
+        		GestionDeMascotas.this.dispose();
+        	}
+        });
         jScrollPane2 = new javax.swing.JScrollPane();
         tableClientes = new javax.swing.JTable();
         btnAgregarMascota = new javax.swing.JButton();
+        btnAgregarMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new AgregarMascota().setVisible(true);
+        		GestionDeMascotas.this.dispose();
+        	}
+        });
         btnBuscarMascota = new javax.swing.JButton();
+        btnBuscarMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new BuscarMascota().setVisible(true);
+        		GestionDeMascotas.this.dispose();
+        	}
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

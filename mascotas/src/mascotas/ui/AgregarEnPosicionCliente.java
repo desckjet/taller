@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class AgregarEnPosicionCliente extends JFrame {
 
@@ -17,6 +19,8 @@ public class AgregarEnPosicionCliente extends JFrame {
      * Creates new form AgregarEnPosicionCliente
      */
     public AgregarEnPosicionCliente() {
+    	setTitle("AGREGAR CLIENTE");
+    	setType(Type.POPUP);
         initComponents();
     }
 
@@ -40,10 +44,19 @@ public class AgregarEnPosicionCliente extends JFrame {
         btnCancelarPosicion = new javax.swing.JButton();
         btnCancelarPosicion.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		new AgregarCliente().setVisible(true);
+        		AgregarEnPosicionCliente.this.dispose();
         	
         	}
         });
         btnFinalizarPosicion = new javax.swing.JButton();
+        btnFinalizarPosicion.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showConfirmDialog(null, "Se ha agregado exitosamente");
+        		AgregarEnPosicionCliente.this.dispose();
+        		
+        	}
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -34,9 +36,33 @@ public class GestionDeClientes extends javax.swing.JFrame {
 		jScrollPane2 = new javax.swing.JScrollPane();
 		tableClientes = new javax.swing.JTable();
 		btnAgregarCliente = new javax.swing.JButton();
+		btnAgregarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AgregarCliente().setVisible(true);
+				GestionDeClientes.this.dispose();
+			}
+		});
 		btnBuscarCliente = new javax.swing.JButton();
+		btnBuscarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new BuscarCliente().setVisible(true);
+				GestionDeClientes.this.dispose();
+			}
+		});
 		btnVerMascotas = new javax.swing.JButton();
+		btnVerMascotas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new GestionDeMascotas().setVisible(true);
+				GestionDeClientes.this.dispose();
+			}
+		});
 		BtnEliminarCliente = new javax.swing.JButton();
+		BtnEliminarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new EliminarCliente().setVisible(true);
+				GestionDeClientes.this.dispose();
+			}
+		});
 
 		jTable1.setModel(
 				new javax.swing.table.DefaultTableModel(
@@ -50,7 +76,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 		tableClientes.setModel(new javax.swing.table.DefaultTableModel(
 				new Object[][] { { null, null, null, null }, { null, null, null, null }, { null, null, null, null },
 						{ null, null, null, null } },
-				new String[] { "Identificación", "Nombre", "Apellido", "Telefono" }));
+				new String[] { "Identificación", "Nombre", "Apellido", "Teléfono" }));
 		tableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				tableClientesMouseClicked(evt);

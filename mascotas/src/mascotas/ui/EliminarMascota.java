@@ -4,8 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class EliminarMascota extends JFrame {
 
@@ -15,6 +19,8 @@ public class EliminarMascota extends JFrame {
      * Creates new form EliminarMascota
      */
     public EliminarMascota() {
+	 	setTitle("ELIMINAR MASCOTA");
+	 	setType(Type.POPUP);
         initComponents();
     }
 
@@ -29,7 +35,19 @@ public class EliminarMascota extends JFrame {
 
         txtIdentificacionMascotaEliminar = new javax.swing.JTextField();
         btnEliminarMascota = new javax.swing.JButton();
+        btnEliminarMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showConfirmDialog(null, "Se ha eliminado exitosamente");
+        		EliminarMascota.this.dispose();
+        	}
+        });
         btnCancelarEliminarMascota = new javax.swing.JButton();
+        btnCancelarEliminarMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new GestionDeMascotas().setVisible(true);
+        		EliminarMascota.this.dispose();
+        	}
+        });
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

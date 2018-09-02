@@ -4,8 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class AgregarEnPosicionMascota extends JFrame {
 
@@ -14,6 +18,8 @@ public class AgregarEnPosicionMascota extends JFrame {
      * Creates new form AgregarEnPosicionMascota
      */
     public AgregarEnPosicionMascota() {
+		setTitle("AGREGAR MASCOTA");
+		setType(Type.POPUP);
         initComponents();
     }
 
@@ -27,7 +33,19 @@ public class AgregarEnPosicionMascota extends JFrame {
     private void initComponents() {
 
         btnCancelarPosicionMascota = new javax.swing.JButton();
+        btnCancelarPosicionMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new AgregarMascota();
+        		AgregarEnPosicionMascota.this.dispose();
+        	}
+        });
         btnFinalizarPosicionMascota = new javax.swing.JButton();
+        btnFinalizarPosicionMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showConfirmDialog(null, "Se ha agregado exitosamente");
+        		AgregarEnPosicionMascota.this.dispose();
+        	}
+        });
         jPanel1 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();

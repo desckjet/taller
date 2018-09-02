@@ -4,8 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class EliminarCliente extends JFrame {
 
@@ -13,6 +17,8 @@ public class EliminarCliente extends JFrame {
      * Creates new form EliminarCliente
      */
     public EliminarCliente() {
+	 	setTitle("ELIMINAR CLIENTE");
+	 	setType(Type.POPUP);
         initComponents();
     }
 
@@ -28,12 +34,24 @@ public class EliminarCliente extends JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtIdentificacionClienteEliminar = new javax.swing.JTextField();
         btnEliminarCliente = new javax.swing.JButton();
+        btnEliminarCliente.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showConfirmDialog(null, "Se ha eliminado exitosamente");
+        		EliminarCliente.this.dispose();
+        	}
+        });
         btnCancelarEliminarCliente = new javax.swing.JButton();
+        btnCancelarEliminarCliente.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new GestionDeClientes().setVisible(true);
+        		EliminarCliente.this.dispose();
+        	}
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel1.setText("Identificación:");
+        jLabel1.setText("Identificación del cliente a eliminar:");
 
         btnEliminarCliente.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         btnEliminarCliente.setText("Eliminar");

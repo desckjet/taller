@@ -6,6 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
+import javax.swing.border.EtchedBorder;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Window.Type;
+import java.awt.Color;
 
 
 /**
@@ -18,6 +26,8 @@ public class AgregarCliente extends javax.swing.JFrame {
      * Creates new form AgregarCliente
      */
     public AgregarCliente() {
+    	setTitle("AGREGAR CLIENTE");
+    	setType(Type.POPUP);
         initComponents();
     }
 
@@ -32,6 +42,7 @@ public class AgregarCliente extends javax.swing.JFrame {
 
         lbNombreCliente = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jPanel1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Informaci\u00F3n", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
         txtDireccionCliente = new javax.swing.JTextField();
         txtTelefonoCliente = new javax.swing.JTextField();
         lbIdentificacionCliente = new javax.swing.JLabel();
@@ -139,25 +150,25 @@ public class AgregarCliente extends javax.swing.JFrame {
         );
 
         javax.swing.GroupLayout lbNombreClienteLayout = new javax.swing.GroupLayout(lbNombreCliente);
-        lbNombreCliente.setLayout(lbNombreClienteLayout);
         lbNombreClienteLayout.setHorizontalGroup(
-            lbNombreClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lbNombreClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(lbNombreClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+        	lbNombreClienteLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(lbNombreClienteLayout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(lbNombreClienteLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        			.addContainerGap())
         );
         lbNombreClienteLayout.setVerticalGroup(
-            lbNombreClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lbNombreClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        	lbNombreClienteLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(lbNombreClienteLayout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
+        lbNombreCliente.setLayout(lbNombreClienteLayout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,7 +191,8 @@ public class AgregarCliente extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void btnContinuarAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                           
-        // TODO add your handling code here:
+    	new AgregarEnPosicionCliente().setVisible(true);
+    	this.dispose();
     }                                                          
 
     private void btnCancelarAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {    

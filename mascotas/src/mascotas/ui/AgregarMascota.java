@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Window.Type;
+import javax.swing.border.TitledBorder;
 
 public class AgregarMascota extends JFrame {
 
@@ -14,6 +16,8 @@ public class AgregarMascota extends JFrame {
      * Creates new form AgregarMascota
      */
     public AgregarMascota() {
+	 	setTitle("AGREGAR MASCOTA");
+	 	setType(Type.POPUP);
         initComponents();
     }
 
@@ -28,6 +32,7 @@ public class AgregarMascota extends JFrame {
 
         lbNombreCliente = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jPanel1.setBorder(new TitledBorder(null, "Informaci\u00F3n", TitledBorder.CENTER, TitledBorder.TOP, null, null));
         txtRazaMascota = new javax.swing.JTextField();
         txtColorMascota = new javax.swing.JTextField();
         lbIdentificacionCliente = new javax.swing.JLabel();
@@ -176,11 +181,13 @@ public class AgregarMascota extends JFrame {
     }// </editor-fold>                        
 
     private void btnCancelarAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-        // TODO add your handling code here:
+    	new GestionDeMascotas().setVisible(true);
+    	dispose();
     }                                                         
 
     private void btnContinuarAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {                                                           
-        // TODO add your handling code here:
+    	new AgregarEnPosicionMascota().setVisible(true);
+    	dispose();
     }                                                          
 
     /**
