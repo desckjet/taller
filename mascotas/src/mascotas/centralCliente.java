@@ -5,7 +5,6 @@ import exceptions.NoExisteException;
 public class centralCliente {
 
 	private static Cliente primero;
-	centralMascota mas = new centralMascota();
 
 	public void insertarInicio(Cliente n) {
 

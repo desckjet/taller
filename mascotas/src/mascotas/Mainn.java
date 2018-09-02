@@ -8,7 +8,7 @@ public class Mainn {
 	public static centralCliente cliente = new centralCliente();
 	public static centralMascota mascota = new centralMascota();
 	public static centralMascota mascota2 = new centralMascota();
-
+	
 	public static void main(String[] args) throws NoExisteException {
 		
 		mascota.insertarAlFinal(new Mascota(1,"humo","malamute","rojo"));
@@ -17,6 +17,11 @@ public class Mainn {
 		
 		mascota2.insertarAlFinal(new Mascota(1,"kody","lobo","blanco"));
 		mascota2.insertarAlFinal(new Mascota(2,"berta","toro","cafe"));
+		
+		/* PUEDE SER
+		 * Cliente cli = new Cliente(4, "x", "gfs", 456, null);
+		 
+		cli.setMascota(mascota);*/
 		
 		cliente.insertarFinal(new Cliente(1, "negro", "cra 28 # 45-26", 4523105, mascota));
 		cliente.insertarFinal(new Cliente(2, "juicio", "cll 58 # 12-32", 4103652,mascota2));
@@ -33,12 +38,17 @@ public class Mainn {
 		//cliente.insertarAntesDe(1, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 		//cliente.insertarDespuesDe(3, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 		
-		cliente.eliminar(4);
+		//cliente.eliminar(4);
 		
 		// lista todos los clientes
-		cliente.listar();
+		//cliente.listar();
+		System.out.println(mascota2.buscarMascota(1).getNombre());
+		//mascota.eliminarMascota(3);
+		cliente.verMascotas(1);
 		
 		new MenuPrincipal().setVisible(true);
+		
+		
 	}
 
 }
