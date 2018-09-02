@@ -1,5 +1,7 @@
 package mascotas;
 
+import exceptions.NoExisteException;
+
 public class centralCliente {
 
 	private static Cliente primero;
@@ -105,5 +107,62 @@ public class centralCliente {
 
 	}
 
+	public Cliente localizarAnterior(int codigo) {
+
+		Cliente anterior = null;
+
+		Cliente actual = primero;
+
+		while (actual != null && actual.getIdentificacion() != codigo) {
+			anterior = actual;
+			actual = actual.getSiguienteCliente();
+		}
+		return actual != null ? anterior : null;
+
+	}
+
+	public void insertarAntesDe(int codigo, Cliente n) throws NoExisteException {
+
+		Cliente anterior = localizarAnterior(codigo);
+
+		if (anterior == null) {
+			throw new NoExisteException();
+		} else {
+			n.setSiguienteCliente(anterior.getSiguienteCliente());
+			anterior.setSiguienteCliente(n);
+		}
+	}
+
+	public void insertarDespuesDe(int codigo, Cliente n) throws NoExisteException {
+
+		Cliente actual = buscar(codigo);
+
+		if (actual == null) {
+			throw new NoExisteException();
+		} else {
+			n.setSiguienteCliente(actual.getSiguienteCliente());
+			actual.setSiguienteCliente(n);
+		}
+	}
+	
+	public void eliminar(int codigo) throws NoExisteException {
+		
+		Cliente anterior = null;
+		Cliente actual = primero;
+		
+		while (actual != null && actual.getIdentificacion() != codigo) {
+			anterior = actual;
+			actual = actual.getSiguienteCliente();
+		}
+		
+		if(anterior == null) {
+			throw  new NoExisteException();
+		} else {
+			anterior.setSiguienteCliente(actual.getSiguienteCliente());
+			actual.setSiguienteCliente(null);
+		}
+
+		
+	}
 
 }
