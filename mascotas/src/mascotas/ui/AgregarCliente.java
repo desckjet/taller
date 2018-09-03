@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+import mascotas.Cliente;
+import mascotas.Mainn;
+
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 import javax.swing.GroupLayout.Alignment;
@@ -192,6 +196,7 @@ public class AgregarCliente extends javax.swing.JFrame {
 
     private void btnContinuarAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                           
     	new AgregarEnPosicionCliente().setVisible(true);
+    	AgregarEnPosicionCliente.clienteTemporal = new Cliente(Integer.valueOf(txtIdentificacionCliente.getText()), txtNombreCliente.getText(), txtDireccionCliente.getText(), (Integer.valueOf(txtTelefonoCliente.getText())), null);
     	this.dispose();
     }                                                          
 

@@ -146,23 +146,9 @@ public class centralCliente {
 	}
 	
 	public void eliminar(int codigo) throws NoExisteException {
-		
-		Cliente anterior = null;
-		Cliente actual = primero;
-		
-		while (actual != null && actual.getIdentificacion() != codigo) {
-			anterior = actual;
-			actual = actual.getSiguienteCliente();
-		}
-		
-		if(anterior == null) {
-			throw  new NoExisteException();
-		} else {
-			anterior.setSiguienteCliente(actual.getSiguienteCliente());
-			actual.setSiguienteCliente(null);
-		}
-
-		
+		Cliente anterior = localizarAnterior(codigo);
+		Cliente actual = buscar(codigo);
+		anterior.setSiguienteCliente(actual.getSiguienteCliente());
 	}
 
 }

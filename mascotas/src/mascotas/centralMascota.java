@@ -1,5 +1,7 @@
 package mascotas;
 
+import exceptions.NoExisteException;
+
 public class centralMascota {
 
 	public Mascota primero;
@@ -34,6 +36,66 @@ public class centralMascota {
 		}
 
 	}
+	
+	public void insertarAlComienzo (Mascota n) {
+		if (primero == null) {
+			primero = n;
+		} else {
+			n.setSiguienteMascota(primero);
+			primero = n;
+		}
+	}
+	public Mascota localizarAnterior(int codigo) {
+
+		Mascota anterior = null;
+
+		Mascota actual = primero;
+
+		while (actual != null && actual.getIdentificacion() != codigo) {
+			anterior = actual;
+			actual = actual.getSiguienteMascota();
+		}
+		return actual != null ? anterior : null;
+
+	}
+	public Mascota buscar(int contenido) {
+
+		Mascota actual = primero;
+
+		while (actual != null && actual.getIdentificacion() != contenido) {
+			actual = actual.getSiguienteMascota();
+		}
+
+		return actual;
+	}
+
+	public void insertarAntesDe(int codigo, Mascota n) throws NoExisteException {
+
+		Mascota anterior = localizarAnterior(codigo);
+
+		if (anterior == null) {
+			throw new NoExisteException();
+		} else {
+			n.setAnteriorMascota(anterior);
+			n.setSiguienteMascota(anterior.getSiguienteMascota());
+			anterior.getSiguienteMascota().setAnteriorMascota(n);
+			anterior.setSiguienteMascota(n);
+		}
+	}
+
+	public void insertarDespuesDe(int codigo, Mascota n) throws NoExisteException {
+
+		Mascota actual = buscar(codigo);
+
+		if (actual == null) {
+			throw new NoExisteException();
+		} else {
+			n.setAnteriorMascota(actual);
+			n.setSiguienteMascota(actual.getSiguienteMascota());
+			actual.getSiguienteMascota().setAnteriorMascota(n);
+			actual.setSiguienteMascota(n);
+		}
+	}
 
 	public int total() {
 
@@ -66,7 +128,13 @@ public class centralMascota {
 		return actual;
 	}
 	
-
+	public void eliminarMascota(int codigo) {
+		Mascota anterior = localizarAnterior(codigo);
+		Mascota actual = buscar(codigo);
+		Mascota siguiente = actual.getSiguienteMascota();
+		anterior.setSiguienteMascota(siguiente);
+		siguiente.setAnteriorMascota(anterior);
+	}
 	
 	public Mascota sig() {
 		

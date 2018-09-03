@@ -18,17 +18,19 @@ public class miModeloMascota implements TableModel {
 		this.lista = lista;
 	}
 
-	@Override
+	// Obtenemos el total de filas que tiene nuestra tabla
 	public int getRowCount() {
 		return lista.total();
 	}
 
-	@Override
+	// Como sabemos que la cantidad de columnas no va a cambiar, ponemos 4 que
+	// equivalen a la identificacion
+	// nombre, raza y color de la mascota
 	public int getColumnCount() {
 		return 4;
 	}
 
-	@Override
+	// Retornamos el nombre que tiene cada columna de nuestra tabla
 	public String getColumnName(int columnIndex) {
 
 		switch (columnIndex) {
@@ -45,7 +47,7 @@ public class miModeloMascota implements TableModel {
 		}
 	}
 
-	@Override
+	// Indicamos el tipo de dato al que pertenece cada columna
 	public Class<?> getColumnClass(int columnIndex) {
 
 		switch (columnIndex) {
@@ -62,12 +64,13 @@ public class miModeloMascota implements TableModel {
 		}
 	}
 
-	@Override
+	// Como nuestra tabla no es editable desde el formulario sino desde los botones,
+	// retornamos un falso
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
 	}
 
-	@Override
+	// Obtenemos los valores para cada columna de la lista mascotas
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Mascota mascota = lista.buscarPosicion(rowIndex);
 		switch (columnIndex) {
@@ -84,18 +87,21 @@ public class miModeloMascota implements TableModel {
 		}
 	}
 
-	@Override
+	// Aqui asignamos los valores en la posicion de la tabla, en su respectiva
+	// columna y adicionalmente
+	// como aValue puede ser cualquier cosa, hacemos la conversion al tipo de dato
+	// que se espera
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Mascota mascota = lista.buscarPosicion(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			mascota.setIdentificacion(Integer.valueOf((Integer)aValue));
+			mascota.setIdentificacion(Integer.valueOf((Integer) aValue));
 			break;
 		case 1:
 			mascota.setNombre(String.valueOf(aValue));
 			break;
 		case 2:
-			mascota.setRaza(String.valueOf(aValue)); 
+			mascota.setRaza(String.valueOf(aValue));
 			break;
 		case 3:
 			mascota.setColor(String.valueOf(aValue));
@@ -105,12 +111,12 @@ public class miModeloMascota implements TableModel {
 		}
 	}
 
-	@Override
+	// Aquí hacemos la reaccion cuando se agrega una nueva mascota
 	public void addTableModelListener(TableModelListener l) {
 		this.onAddListenerMascota = l;
 	}
 
-	@Override
+	// Aquí hacemos la reaccion cuando se elimina una nueva mascota
 	public void removeTableModelListener(TableModelListener l) {
 		this.onRemoveListenerMascota = l;
 	}

@@ -7,6 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import exceptions.NoExisteException;
+import mascotas.Mainn;
+import mascotas.Mascota;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
@@ -42,15 +47,80 @@ public class AgregarEnPosicionMascota extends JFrame {
         btnFinalizarPosicionMascota = new javax.swing.JButton();
         btnFinalizarPosicionMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		
+        		switch (bandera) {
+				case 0:
+					Mainn.mascota.insertarAlComienzo(mascotaTemporal);
+					break;
+				case 1:
+					Mainn.mascota.insertarAlFinal(mascotaTemporal);
+					break;
+				case 2:
+					try {
+						Mainn.mascota.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigoMascota.getText()),
+								mascotaTemporal);
+
+					} catch (NoExisteException e2) {
+						JOptionPane.showMessageDialog(AgregarEnPosicionMascota.this,
+								"No hay un código como referencia.", "ERROR", JOptionPane.ERROR_MESSAGE);// Mensaje
+																											// bonito
+						return;
+					}
+					break;
+				case 3:
+					try {
+						Mainn.mascota.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigoMascota.getText()),
+								mascotaTemporal);
+
+					} catch (NoExisteException e2) {
+						JOptionPane.showMessageDialog(AgregarEnPosicionMascota.this,
+								"No hay un código como referencia.", "ERROR", JOptionPane.ERROR_MESSAGE);// Mensaje
+																											// bonito
+						return;
+					}
+
+					break;
+				default:
+					break;
+				}
         		JOptionPane.showConfirmDialog(null, "Se ha agregado exitosamente");
         		AgregarEnPosicionMascota.this.dispose();
+        		new GestionDeMascotas().setVisible(true);
         	}
         });
         jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rbtAlComienzoMascota = new javax.swing.JRadioButton();
+        rbtAlComienzoMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if(rbtAlComienzoMascota.isSelected()) {
+        			bandera = 0;
+        		}
+        	}
+        });
+        rbtAlFinalMascota = new javax.swing.JRadioButton();
+        rbtAlFinalMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if(rbtAlFinalMascota.isSelected()) {
+        			bandera = 1;
+        		}
+        	}
+        });
+        rbtAntesMascota = new javax.swing.JRadioButton();
+        rbtAntesMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if(rbtAntesMascota.isSelected()) {
+        			bandera = 2;
+        		}
+        	}
+        });
+        rbtDespuesMascota = new javax.swing.JRadioButton();
+        rbtDespuesMascota.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if(rbtDespuesMascota.isSelected()) {
+        			bandera = 3;
+        		}
+        	}
+        });
         txtDespuesDeEsteCodigoMascota = new javax.swing.JTextField();
         txtAntesDeEsteCodigoMascota = new javax.swing.JTextField();
 
@@ -62,44 +132,44 @@ public class AgregarEnPosicionMascota extends JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Comic Sans MS", 1, 13))); // NOI18N
 
-        jRadioButton1.setText("Al comienzo de la lista.");
+        rbtAlComienzoMascota.setText("Al comienzo de la lista.");
 
-        jRadioButton2.setText("Al final de la lista.");
+        rbtAlFinalMascota.setText("Al final de la lista.");
 
-        jRadioButton3.setText("Antes de la mascota con el código:");
+        rbtAntesMascota.setText("Antes de la mascota con el código:");
 
-        jRadioButton4.setText("Después de la mascota con el código:");
+        rbtDespuesMascota.setText("Después de la mascota con el código:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+            .addComponent(rbtAlFinalMascota, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton4))
+                    .addComponent(rbtAntesMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtDespuesMascota))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDespuesDeEsteCodigoMascota)
                     .addComponent(txtAntesDeEsteCodigoMascota))
                 .addContainerGap())
-            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rbtAlComienzoMascota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rbtAlComienzoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rbtAlFinalMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtAntesMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAntesDeEsteCodigoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtDespuesMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDespuesDeEsteCodigoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -173,11 +243,13 @@ public class AgregarEnPosicionMascota extends JFrame {
     private javax.swing.JButton btnCancelarPosicionMascota;
     private javax.swing.JButton btnFinalizarPosicionMascota;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton rbtAlComienzoMascota;
+    private javax.swing.JRadioButton rbtAlFinalMascota;
+    private javax.swing.JRadioButton rbtAntesMascota;
+    private javax.swing.JRadioButton rbtDespuesMascota;
     private javax.swing.JTextField txtAntesDeEsteCodigoMascota;
     private javax.swing.JTextField txtDespuesDeEsteCodigoMascota;
+    public static Mascota mascotaTemporal;
+    private int bandera = 0;
     // End of variables declaration                   
 }

@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import exceptions.NoExisteException;
+import mascotas.Mainn;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
@@ -36,8 +40,19 @@ public class EliminarCliente extends JFrame {
         btnEliminarCliente = new javax.swing.JButton();
         btnEliminarCliente.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		try {
+					Mainn.cliente.eliminar(Integer.valueOf(txtIdentificacionClienteEliminar.getText()));
+				} catch (NumberFormatException e1) {
+					JOptionPane.showMessageDialog(EliminarCliente.this, "Recuerde que solo puede ingresar el código", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+					e1.printStackTrace();
+				} catch (NoExisteException e1) {
+					JOptionPane.showMessageDialog(EliminarCliente.this, "El cliente no exite", "ERROR", JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
+				}
+        		
         		JOptionPane.showConfirmDialog(null, "Se ha eliminado exitosamente");
         		EliminarCliente.this.dispose();
+        		new GestionDeClientes().setVisible(true);
         	}
         });
         btnCancelarEliminarCliente = new javax.swing.JButton();

@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import mascotas.Mainn;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
@@ -37,8 +40,10 @@ public class EliminarMascota extends JFrame {
         btnEliminarMascota = new javax.swing.JButton();
         btnEliminarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		Mainn.mascota.eliminarMascota(Integer.valueOf(txtIdentificacionMascotaEliminar.getText()));
         		JOptionPane.showConfirmDialog(null, "Se ha eliminado exitosamente");
         		EliminarMascota.this.dispose();
+        		new GestionDeMascotas().setVisible(true);
         	}
         });
         btnCancelarEliminarMascota = new javax.swing.JButton();

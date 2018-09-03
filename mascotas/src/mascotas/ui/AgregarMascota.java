@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Window.Type;
 import javax.swing.border.TitledBorder;
 
+import mascotas.Mascota;
+
 public class AgregarMascota extends JFrame {
 
 	private JPanel contentPane;
@@ -35,11 +37,11 @@ public class AgregarMascota extends JFrame {
         jPanel1.setBorder(new TitledBorder(null, "Informaci\u00F3n", TitledBorder.CENTER, TitledBorder.TOP, null, null));
         txtRazaMascota = new javax.swing.JTextField();
         txtColorMascota = new javax.swing.JTextField();
-        lbIdentificacionCliente = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbIdentificacionMascota = new javax.swing.JLabel();
+        lbNombreMascota = new javax.swing.JLabel();
         txtIdentificacionMascota = new javax.swing.JTextField();
-        lbDireccionCliente = new javax.swing.JLabel();
-        lbTelefonoCliente = new javax.swing.JLabel();
+        lbRazaMascota = new javax.swing.JLabel();
+        lbColorMascota = new javax.swing.JLabel();
         txtNombreMascota = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btnCancelarAgregarMascota = new javax.swing.JButton();
@@ -47,13 +49,13 @@ public class AgregarMascota extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbIdentificacionCliente.setText("Identificación:");
+        lbIdentificacionMascota.setText("Identificación:");
 
-        jLabel2.setText("Nombre:");
+        lbNombreMascota.setText("Nombre:");
 
-        lbDireccionCliente.setText("Raza:");
+        lbRazaMascota.setText("Raza:");
 
-        lbTelefonoCliente.setText("Color:");
+        lbColorMascota.setText("Color:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,18 +67,18 @@ public class AgregarMascota extends JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbIdentificacionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                .addComponent(lbIdentificacionMascota, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbNombreMascota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(6, 6, 6)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtIdentificacionMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombreMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lbDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                            .addComponent(lbTelefonoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbRazaMascota, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                            .addComponent(lbColorMascota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtColorMascota, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -88,20 +90,20 @@ public class AgregarMascota extends JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbIdentificacionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbIdentificacionMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdentificacionMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbNombreMascota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNombreMascota, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbRazaMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRazaMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtColorMascota, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(lbTelefonoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbColorMascota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         btnCancelarAgregarMascota.setText("Cancelar");
@@ -115,6 +117,7 @@ public class AgregarMascota extends JFrame {
         btnContinuarAgregarMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinuarAgregarMascotaActionPerformed(evt);
+                
             }
         });
 
@@ -187,6 +190,7 @@ public class AgregarMascota extends JFrame {
 
     private void btnContinuarAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {                                                           
     	new AgregarEnPosicionMascota().setVisible(true);
+    	AgregarEnPosicionMascota.mascotaTemporal = new Mascota(Integer.valueOf(txtIdentificacionMascota.getText()), txtNombreMascota.getText(), txtRazaMascota.getText(), txtColorMascota.getText());
     	dispose();
     }                                                          
 
@@ -228,13 +232,13 @@ public class AgregarMascota extends JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JButton btnCancelarAgregarMascota;
     private javax.swing.JButton btnContinuarAgregarMascota;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lbNombreMascota;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lbDireccionCliente;
-    private javax.swing.JLabel lbIdentificacionCliente;
+    private javax.swing.JLabel lbRazaMascota;
+    private javax.swing.JLabel lbIdentificacionMascota;
     private javax.swing.JPanel lbNombreCliente;
-    private javax.swing.JLabel lbTelefonoCliente;
+    private javax.swing.JLabel lbColorMascota;
     private javax.swing.JTextField txtColorMascota;
     private javax.swing.JTextField txtIdentificacionMascota;
     private javax.swing.JTextField txtNombreMascota;

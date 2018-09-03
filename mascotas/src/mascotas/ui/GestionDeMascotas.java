@@ -46,7 +46,7 @@ public class GestionDeMascotas extends JFrame {
         	}
         });
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableClientes = new javax.swing.JTable();
+        tableMascota = new javax.swing.JTable();
         btnAgregarMascota = new javax.swing.JButton();
         btnAgregarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -66,13 +66,13 @@ public class GestionDeMascotas extends JFrame {
 
         BtnEliminarMascota.setText("Eliminar");
 
-        tableClientes.setModel(new miModeloMascota(Mainn.mascota));
-        tableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableMascota.setModel(new miModeloMascota(Mainn.mascota));
+        tableMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableClientesMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tableClientes);
+        jScrollPane2.setViewportView(tableMascota);
 
         btnAgregarMascota.setText("Agregar");
 
@@ -155,6 +155,6 @@ public class GestionDeMascotas extends JFrame {
     private javax.swing.JButton btnAgregarMascota;
     private javax.swing.JButton btnBuscarMascota;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tableClientes;
+    private javax.swing.JTable tableMascota;
     // End of variables declaration                   
 }
