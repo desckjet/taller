@@ -14,6 +14,10 @@ public class Mainn {
 		mascota.insertarAlFinal(new Mascota(1,"humo","malamute","rojo"));
 		mascota.insertarAlFinal(new Mascota(2,"carbon","murcielago","verde"));
 		mascota.insertarAlFinal(new Mascota(3,"n^2","rinoceronte","gris"));
+		mascota.insertarAlFinal(new Mascota(4,"n^2","rinoceronte","gris"));
+		mascota.insertarAlFinal(new Mascota(5,"n^2","rinoceronte","gris"));
+
+
 		
 		mascota2.insertarAlFinal(new Mascota(1,"kody","lobo","blanco"));
 		mascota2.insertarAlFinal(new Mascota(2,"berta","toro","cafe"));
@@ -33,10 +37,12 @@ public class Mainn {
 		//cliente.insertarAntesDe(1, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 		//cliente.insertarDespuesDe(3, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 		
-		cliente.eliminar(4);
+		//cliente.eliminar(4);
 		
 		// lista todos los clientes
 		cliente.listar();
+		
+		//mascota.insertarAlComienzo(new Mascota(4, "fsfnombre", "raza", "color"));
 		
 		new MenuPrincipal().setVisible(true);
 	}
