@@ -4,8 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import mascotas.Mainn;
 import modelo.miModeloCliente;
@@ -18,6 +22,8 @@ import java.awt.event.ActionEvent;
  * @author camilavargas
  */
 public class GestionDeClientes extends javax.swing.JFrame {
+
+	public static int filaSeleccionada;
 
 	/**
 	 * Creates new form GestionDeClientes
@@ -70,6 +76,21 @@ public class GestionDeClientes extends javax.swing.JFrame {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		tableClientes.setModel(new miModeloCliente(Mainn.cliente));
+		
+		ListSelectionModel model = tableClientes.getSelectionModel();
+		model.addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				// TODO Auto-generated method stub
+				if(! model.isSelectionEmpty()) {
+					filaSeleccionada = model.getMinSelectionIndex();
+					Mainn.cliente.verMascotas(GestionDeClientes.filaSeleccionada);
+					JOptionPane.showMessageDialog(null, "selecciono la fila"+ filaSeleccionada);
+				}
+			}
+		});
+		
 		tableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				tableClientesMouseClicked(evt);
