@@ -97,6 +97,19 @@ public class centralMascota {
 		}
 	}
 
+	public void insertarInicio(Mascota n) {
+
+		n.setAnteriorMascota(null);
+
+		if (primero != null) {
+			n.setSiguienteMascota(primero);
+			primero.setAnteriorMascota(n);
+		} else {
+			n.setSiguienteMascota(null);
+		}
+		primero = n;
+	}
+
 	public int total() {
 
 		int contador = 0;
@@ -109,12 +122,7 @@ public class centralMascota {
 		return contador;
 	}
 
-	public String toString() {
-		String mensaje = ("la mascota se llama " + primero.getNombre());
-		return mensaje;
-
-	}
-	//ubicar el numero de la fila que correspode a la tabla
+	// ubicar el numero de la fila que correspode a la tabla
 	public Mascota buscarPosicion(int posicion) {
 		if (posicion >= this.total()) {
 			return null;
@@ -127,26 +135,45 @@ public class centralMascota {
 		}
 		return actual;
 	}
-	
-	public void eliminarMascota(int codigo) {
-		
-		Mascota anterior = localizarAnterior(codigo);
-		Mascota actual = buscar(codigo);
-		Mascota siguientePrimero = actual.getSiguienteMascota();
-		if(anterior == null) {
-			siguientePrimero = actual.getSiguienteMascota();
-			siguientePrimero.setAnteriorMascota(null);
-		}else {
-		siguientePrimero = actual.getSiguienteMascota();
-		anterior = actual.getAnteriorMascota();
-		siguientePrimero.setAnteriorMascota(anterior);
+
+	public Mascota buscarMascota(int codigo) {
+
+		Mascota actual = primero;
+
+		while (actual != null && actual.getIdentificacion() != codigo) {
+			actual = actual.getSiguienteMascota();
 		}
+
+		return actual;
+
 	}
 
-	
-	
+	public void eliminarMascota(int codigo) {
+
+		Mascota actual = buscarMascota(codigo);
+
+		if (actual != null) {
+			if (actual.getAnteriorMascota() == null) {
+				primero = actual.getSiguienteMascota();
+				primero.setAnteriorMascota(null);
+			} else if (actual.getSiguienteMascota() == null) {
+				actual.getAnteriorMascota().setSiguienteMascota(null);
+			} else {
+				actual.getAnteriorMascota().setSiguienteMascota(actual.getSiguienteMascota());
+				actual.getSiguienteMascota().setAnteriorMascota(actual.getAnteriorMascota());
+			}
+		}
+
+	}
+
+	public String toString() {
+		String mensaje = ("la mascota se llama " + primero.getNombre());
+		return mensaje;
+
+	}
+
 	public Mascota sig() {
-		
+
 		primero = primero.getSiguienteMascota();
 		return primero;
 	}
