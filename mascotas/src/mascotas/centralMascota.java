@@ -129,12 +129,21 @@ public class centralMascota {
 	}
 	
 	public void eliminarMascota(int codigo) {
+		
 		Mascota anterior = localizarAnterior(codigo);
 		Mascota actual = buscar(codigo);
-		Mascota siguiente = actual.getSiguienteMascota();
-		anterior.setSiguienteMascota(siguiente);
-		siguiente.setAnteriorMascota(anterior);
+		Mascota siguientePrimero = actual.getSiguienteMascota();
+		if(anterior == null) {
+			siguientePrimero = actual.getSiguienteMascota();
+			siguientePrimero.setAnteriorMascota(null);
+		}else {
+		siguientePrimero = actual.getSiguienteMascota();
+		anterior = actual.getAnteriorMascota();
+		siguientePrimero.setAnteriorMascota(anterior);
+		}
 	}
+
+	
 	
 	public Mascota sig() {
 		

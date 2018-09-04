@@ -42,8 +42,8 @@ public class EliminarMascota extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		Mainn.mascota.eliminarMascota(Integer.valueOf(txtIdentificacionMascotaEliminar.getText()));
         		JOptionPane.showConfirmDialog(null, "Se ha eliminado exitosamente");
-        		EliminarMascota.this.dispose();
         		new GestionDeMascotas().setVisible(true);
+        		EliminarMascota.this.dispose();
         	}
         });
         btnCancelarEliminarMascota = new javax.swing.JButton();

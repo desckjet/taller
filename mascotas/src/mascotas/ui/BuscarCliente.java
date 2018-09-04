@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import mascotas.Mainn;
+import modelo.miModeloCliente;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
@@ -44,7 +48,13 @@ public class BuscarCliente extends JFrame {
         btnBuscarCliente = new javax.swing.JButton();
         btnBuscarCliente.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		JOptionPane.showConfirmDialog(null, "El usuario existe");
+        		if(Mainn.cliente.buscar(Integer.valueOf(txtIdentificacionClienteBuscar.getText()))!=null) {
+            		JOptionPane.showConfirmDialog(null, "El cliente Si existe");
+        		}else {
+            		JOptionPane.showConfirmDialog(null, "El cliente No existe");
+        		}
+        		new GestionDeClientes().setVisible(true);
+        	dispose();
         	}
         });
         btnCancelarBuscarCliente = new javax.swing.JButton();

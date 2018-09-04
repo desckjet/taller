@@ -37,11 +37,12 @@ public class Mainn {
 		//cliente.insertarAntesDe(1, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 		//cliente.insertarDespuesDe(3, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 		
-		//cliente.eliminar(4);
+		cliente.buscar(4);
+		cliente.buscarPosicion(4);
 		
 		// lista todos los clientes
 		cliente.listar();
-		
+		// mascota.eliminarMascota(1);
 		//mascota.insertarAlComienzo(new Mascota(4, "fsfnombre", "raza", "color"));
 		
 		new MenuPrincipal().setVisible(true);

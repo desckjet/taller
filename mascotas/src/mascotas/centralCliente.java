@@ -70,7 +70,7 @@ public class centralCliente {
 
 		return actual;
 	}
-	
+
 	public Cliente buscarPosicion(int posicion) {
 		if (posicion >= this.longitud()) {
 			return null;
@@ -83,7 +83,7 @@ public class centralCliente {
 		}
 		return actual;
 	}
-	
+
 	public int longitud() {
 		int contador = 0;
 		Cliente actual = primero;
@@ -97,34 +97,26 @@ public class centralCliente {
 	public void verMascotas(int codigo) {
 
 		centralMascota actual = buscar(codigo).getMascota();
-
 		for (int i = -1; i <= actual.total(); i++) {
-
 			System.out.println(actual.toString());
 			actual.sig();
-
 		}
-
 	}
 
 	public Cliente localizarAnterior(int codigo) {
 
 		Cliente anterior = null;
-
 		Cliente actual = primero;
-
 		while (actual != null && actual.getIdentificacion() != codigo) {
 			anterior = actual;
 			actual = actual.getSiguienteCliente();
 		}
 		return actual != null ? anterior : null;
-
 	}
 
 	public void insertarAntesDe(int codigo, Cliente n) throws NoExisteException {
 
 		Cliente anterior = localizarAnterior(codigo);
-
 		if (anterior == null) {
 			throw new NoExisteException();
 		} else {
@@ -136,7 +128,6 @@ public class centralCliente {
 	public void insertarDespuesDe(int codigo, Cliente n) throws NoExisteException {
 
 		Cliente actual = buscar(codigo);
-
 		if (actual == null) {
 			throw new NoExisteException();
 		} else {
@@ -144,11 +135,14 @@ public class centralCliente {
 			actual.setSiguienteCliente(n);
 		}
 	}
-	
-	public void eliminar(int codigo) throws NoExisteException {
-		Cliente anterior = localizarAnterior(codigo);
-		Cliente actual = buscar(codigo);
-		anterior.setSiguienteCliente(actual.getSiguienteCliente());
-	}
 
+	public void eliminar(int codigo) throws NoExisteException {
+		
+		Cliente actual = buscar(codigo);
+		if(actual == primero) {
+			primero = actual.getSiguienteCliente();
+		}else {
+		Cliente anterior = localizarAnterior(codigo);
+		anterior.setSiguienteCliente(actual.getSiguienteCliente());}
+	}
 }
