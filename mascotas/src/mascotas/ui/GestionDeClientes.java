@@ -85,8 +85,8 @@ public class GestionDeClientes extends javax.swing.JFrame {
 				// TODO Auto-generated method stub
 				if(! model.isSelectionEmpty()) {
 					filaSeleccionada = model.getMinSelectionIndex();
+					JOptionPane.showMessageDialog(null, "selecciono la fila "+ filaSeleccionada);
 					Mainn.cliente.verMascotas(GestionDeClientes.filaSeleccionada);
-					JOptionPane.showMessageDialog(null, "selecciono la fila"+ filaSeleccionada);
 				}
 			}
 		});

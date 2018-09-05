@@ -9,17 +9,21 @@ public class Mainn {
 	public static centralCliente cliente = new centralCliente();
 	public static centralMascota mascota = new centralMascota();
 	public static centralMascota mascota2 = new centralMascota();
+	public static centralMascota mascota3 = new centralMascota();
 	
 	public static void main(String[] args) throws NoExisteException {
 		
 		mascota.insertarAlFinal(new Mascota(1,"humo","malamute","rojo"));
 		mascota.insertarAlFinal(new Mascota(2,"carbon","murcielago","verde"));
-		mascota.insertarAlFinal(new Mascota(3,"n^2","rinoceronte","gris"));
-		mascota.insertarAlFinal(new Mascota(4,"n^2","rinoceronte","gris"));
-		mascota.insertarAlFinal(new Mascota(5,"n^2","rinoceronte","gris"));
+		mascota.insertarAlFinal(new Mascota(3,"fd","xd","f"));
+		mascota.insertarAlFinal(new Mascota(4,"fd","xd","f"));
+		mascota.insertarAlFinal(new Mascota(5,"fd","xd","f"));
 		
 		mascota2.insertarAlFinal(new Mascota(1,"kody","lobo","blanco"));
 		mascota2.insertarAlFinal(new Mascota(2,"berta","toro","cafe"));
+		
+		mascota3.insertarAlFinal(new Mascota(1,"holi","lobo","blanco"));
+		mascota3.insertarAlFinal(new Mascota(2,"laura","toro","cafe"));
 		
 		/* PUEDE SER
 		 * Cliente cli = new Cliente(4, "x", "gfs", 456, null);
@@ -28,7 +32,7 @@ public class Mainn {
 		
 		cliente.insertarFinal(new Cliente(0, "negro", "cra 28 # 45-26", 4523105, mascota));
 		cliente.insertarFinal(new Cliente(1, "juicio", "cll 58 # 12-32", 4103652,mascota2));
-		cliente.insertarFinal(new Cliente(2, "pedro", "cra 56 # 02-75", 9632051,null));
+		cliente.insertarFinal(new Cliente(2, "pedro", "cra 56 # 02-75", 9632051,mascota3));
 		cliente.insertarFinal(new Cliente(3, "nulll", "cra 78 # 62-05", 5412035,null));
 		cliente.insertarFinal(new Cliente(4, "chon", "cll 20 # 120-327", 7412035,null));
 		
@@ -44,7 +48,7 @@ public class Mainn {
 		// lista todos los clientes
 		cliente.listar();
 		//System.out.println(GestionDeClientes.filaSeleccionada);
-		//cliente.verMascotas(GestionDeClientes.filaSeleccionada+1);
+		//cliente.verMascotas(1);
 		// mascota.eliminarMascota(1);
 		//mascota.insertarAlComienzo(new Mascota(4, "fsfnombre", "raza", "color"));
 

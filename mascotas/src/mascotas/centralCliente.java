@@ -97,7 +97,9 @@ public class centralCliente {
 	public void verMascotas(int codigo) {
 
 		centralMascota actual = buscar(codigo).getMascota();
-		for (int i = -1; i <= actual.total(); i++) {
+		System.out.println(actual);
+		System.out.println(actual.total());
+		for (int i = 0; i <= actual.total(); i++) {
 			System.out.println(actual.toString());
 			actual.sig();
 		}
