@@ -24,7 +24,8 @@ import java.awt.event.ActionEvent;
 public class GestionDeClientes extends javax.swing.JFrame {
 
 	public static int filaSeleccionada;
-
+	public static int valor;
+	
 	/**
 	 * Creates new form GestionDeClientes
 	 */
@@ -76,7 +77,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		tableClientes.setModel(new miModeloCliente(Mainn.cliente));
-		
+	
 		ListSelectionModel model = tableClientes.getSelectionModel();
 		model.addListSelectionListener(new ListSelectionListener() {
 			
@@ -85,8 +86,8 @@ public class GestionDeClientes extends javax.swing.JFrame {
 				// TODO Auto-generated method stub
 				if(! model.isSelectionEmpty()) {
 					filaSeleccionada = model.getMinSelectionIndex();
-					//JOptionPane.showMessageDialog(null, "selecciono la fila "+ filaSeleccionada);
-					//Mainn.cliente.verMascotas(GestionDeClientes.filaSeleccionada);
+					valor = (int) tableClientes.getValueAt(filaSeleccionada, 0);
+					//JOptionPane.showMessageDialog(null, "selecciono la fila "+ valor);
 				}
 			}
 		});

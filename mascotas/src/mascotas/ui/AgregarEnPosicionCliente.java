@@ -28,7 +28,7 @@ public class AgregarEnPosicionCliente extends JFrame {
 		setType(Type.POPUP);
 		initComponents();
 	}
-
+	
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,7 +127,7 @@ public class AgregarEnPosicionCliente extends JFrame {
 						break;
 					}
 
-					JOptionPane.showConfirmDialog(null, "Se ha agregado exitosamente");
+					JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente");
 					AgregarEnPosicionCliente.this.dispose();
 					new GestionDeClientes().setVisible(true);
 

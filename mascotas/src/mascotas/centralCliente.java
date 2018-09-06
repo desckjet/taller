@@ -122,7 +122,7 @@ public class centralCliente {
 
 		Cliente anterior = localizarAnterior(codigo);
 		if (anterior == null) {
-			throw new NoExisteException();
+			insertarInicio(n);
 		} else {
 			n.setSiguienteCliente(anterior.getSiguienteCliente());
 			anterior.setSiguienteCliente(n);

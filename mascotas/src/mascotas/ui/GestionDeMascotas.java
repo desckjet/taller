@@ -73,12 +73,12 @@ public class GestionDeMascotas extends JFrame {
 
         //tableMascota.setModel(new miModeloMascota(Mainn.mascota));
         
-        tableMascota.setModel(new miModeloMascota(Mainn.cliente.verMascotas(GestionDeClientes.filaSeleccionada)));
-       /* tableMascota.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableMascota.setModel(new miModeloMascota(Mainn.cliente.verMascotas(GestionDeClientes.valor)));
+        tableMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableClientesMouseClicked(evt);
             }
-        });*/
+        });
         jScrollPane2.setViewportView(tableMascota);
 
         btnAgregarMascota.setText("Agregar");

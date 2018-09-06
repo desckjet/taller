@@ -28,11 +28,11 @@ public class Mainn {
 		 
 		cli.setMascota(mascota);*/
 		
-		cliente.insertarFinal(new Cliente(0, "negro", "cra 28 # 45-26", 4523105, mascota));
-		cliente.insertarFinal(new Cliente(1, "juicio", "cll 58 # 12-32", 4103652,mascota2));
-		cliente.insertarFinal(new Cliente(2, "pedro", "cra 56 # 02-75", 9632051,mascota3));
-		cliente.insertarFinal(new Cliente(3, "nulll", "cra 78 # 62-05", 5412035,null));
-		cliente.insertarFinal(new Cliente(4, "chon", "cll 20 # 120-327", 7412035,null));
+		cliente.insertarFinal(new Cliente(1, "negro", "cra 28 # 45-26", 4523105, mascota));
+		cliente.insertarFinal(new Cliente(5, "juicio", "cll 58 # 12-32", 4103652,mascota2));
+		cliente.insertarFinal(new Cliente(6, "pedro", "cra 56 # 02-75", 9632051,mascota3));
+		cliente.insertarFinal(new Cliente(7, "nulll", "cra 78 # 62-05", 5412035,null));
+		cliente.insertarFinal(new Cliente(8, "chon", "cll 20 # 120-327", 7412035,null));
 		
 		/*cliente.insertarInicio(new Cliente(1, "negro", "cra 28 # 45-26", 4523105, mascota));
 		cliente.insertarInicio(new Cliente(2, "juicio", "cll 58 # 12-32", 4103652,mascota2));
@@ -47,6 +47,7 @@ public class Mainn {
 		//cliente.listar();
 		//System.out.println(cliente.verMascotas(0));
 		//cliente.verMascotas(1);
+		//System.out.println(cliente.buscarCliente(5).getMascota());
 		// mascota.eliminarMascota(1);
 		//mascota.insertarAlComienzo(new Mascota(4, "fsfnombre", "raza", "color"));
 

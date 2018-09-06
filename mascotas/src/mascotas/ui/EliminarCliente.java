@@ -49,8 +49,8 @@ public class EliminarCliente extends JFrame {
 					JOptionPane.showMessageDialog(EliminarCliente.this, "El cliente no exite", "ERROR", JOptionPane.ERROR_MESSAGE);
 					e1.printStackTrace();
 				}
-        		
-        		JOptionPane.showConfirmDialog(null, "Se ha eliminado exitosamente");
+        	
+        		JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente");
         		EliminarCliente.this.dispose();
         		new GestionDeClientes().setVisible(true);
         	}

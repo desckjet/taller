@@ -36,7 +36,7 @@ public class centralMascota {
 		}
 
 	}
-	
+
 	public void insertarAlComienzo (Mascota n) {
 		if (primero == null) {
 			primero = n;
@@ -64,7 +64,7 @@ public class centralMascota {
 		Mascota anterior = localizarAnterior(codigo);
 
 		if (anterior == null) {
-			throw new NoExisteException();
+			insertarInicio(n);
 		} else {
 			n.setAnteriorMascota(anterior);
 			n.setSiguienteMascota(anterior.getSiguienteMascota());
