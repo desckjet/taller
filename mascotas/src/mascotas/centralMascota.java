@@ -58,16 +58,6 @@ public class centralMascota {
 		return actual != null ? anterior : null;
 
 	}
-	public Mascota buscar(int contenido) {
-
-		Mascota actual = primero;
-
-		while (actual != null && actual.getIdentificacion() != contenido) {
-			actual = actual.getSiguienteMascota();
-		}
-
-		return actual;
-	}
 
 	public void insertarAntesDe(int codigo, Mascota n) throws NoExisteException {
 
@@ -85,7 +75,7 @@ public class centralMascota {
 
 	public void insertarDespuesDe(int codigo, Mascota n) throws NoExisteException {
 
-		Mascota actual = buscar(codigo);
+		Mascota actual = buscarMascota(codigo);
 
 		if (actual == null) {
 			throw new NoExisteException();

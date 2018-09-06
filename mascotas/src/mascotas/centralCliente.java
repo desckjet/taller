@@ -5,7 +5,6 @@ import exceptions.NoExisteException;
 public class centralCliente {
 
 	private static Cliente primero;
-	centralMascota mas = new centralMascota();
 
 	public void insertarInicio(Cliente n) {
 
@@ -60,7 +59,7 @@ public class centralCliente {
 
 	}
 
-	public Cliente buscar(int contenido) {
+	public Cliente buscarCliente(int contenido) {
 
 		Cliente actual = primero;
 
@@ -94,15 +93,18 @@ public class centralCliente {
 		return contador;
 	}
 
-	public void verMascotas(int codigo) {
+	public centralMascota verMascotas(int codigo) {
 
-		centralMascota actual = buscar(codigo).getMascota();
-		System.out.println(actual);
-		System.out.println(actual.total());
-		for (int i = 0; i <= actual.total(); i++) {
+		centralMascota actual = buscarCliente(codigo).getMascota();
+		
+		/*int i = actual.total();
+		while(i != 0) {
 			System.out.println(actual.toString());
 			actual.sig();
-		}
+			i--;
+		}*/
+		
+		return actual;
 	}
 
 	public Cliente localizarAnterior(int codigo) {
@@ -129,7 +131,7 @@ public class centralCliente {
 
 	public void insertarDespuesDe(int codigo, Cliente n) throws NoExisteException {
 
-		Cliente actual = buscar(codigo);
+		Cliente actual = buscarCliente(codigo);
 		if (actual == null) {
 			throw new NoExisteException();
 		} else {
@@ -140,7 +142,7 @@ public class centralCliente {
 
 	public void eliminar(int codigo) throws NoExisteException {
 		
-		Cliente actual = buscar(codigo);
+		Cliente actual = buscarCliente(codigo);
 		if(actual == primero) {
 			primero = actual.getSiguienteCliente();
 		}else {

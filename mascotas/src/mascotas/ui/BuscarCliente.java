@@ -48,10 +48,10 @@ public class BuscarCliente extends JFrame {
         btnBuscarCliente = new javax.swing.JButton();
         btnBuscarCliente.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		if(Mainn.cliente.buscar(Integer.valueOf(txtIdentificacionClienteBuscar.getText()))!=null) {
-            		JOptionPane.showConfirmDialog(null, "El cliente Si existe");
+        		if(Mainn.cliente.buscarCliente(Integer.valueOf(txtIdentificacionClienteBuscar.getText()))!=null) {
+            		JOptionPane.showMessageDialog(null, "El cliente Si existe");
         		}else {
-            		JOptionPane.showConfirmDialog(null, "El cliente No existe");
+            		JOptionPane.showMessageDialog(null, "El cliente No existe");
         		}
         		new GestionDeClientes().setVisible(true);
         	dispose();
