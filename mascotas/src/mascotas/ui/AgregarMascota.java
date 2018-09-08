@@ -10,6 +10,9 @@ import java.awt.Window.Type;
 import javax.swing.border.TitledBorder;
 
 import mascotas.Mascota;
+import mascotas.centralMascota;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AgregarMascota extends JFrame {
 
@@ -17,7 +20,9 @@ public class AgregarMascota extends JFrame {
 	 /**
      * Creates new form AgregarMascota
      */
-    public AgregarMascota() {
+	private centralMascota mascotas;
+	public AgregarMascota(centralMascota mascotas) {
+		this.mascotas = mascotas;
 	 	setTitle("AGREGAR MASCOTA");
 	 	setType(Type.POPUP);
         initComponents();
@@ -40,6 +45,16 @@ public class AgregarMascota extends JFrame {
         lbIdentificacionMascota = new javax.swing.JLabel();
         lbNombreMascota = new javax.swing.JLabel();
         txtIdentificacionMascota = new javax.swing.JTextField();
+        txtIdentificacionMascota.addKeyListener(new KeyAdapter() {
+
+//      Validación ingreso de texto
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         lbRazaMascota = new javax.swing.JLabel();
         lbColorMascota = new javax.swing.JLabel();
         txtNombreMascota = new javax.swing.JTextField();
@@ -184,13 +199,14 @@ public class AgregarMascota extends JFrame {
     }// </editor-fold>                        
 
     private void btnCancelarAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-    	new GestionDeMascotas().setVisible(true);
+    	new GestionDeMascotas(mascotas).setVisible(true);
     	dispose();
     }                                                         
 
     private void btnContinuarAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {                                                           
-    	new AgregarEnPosicionMascota().setVisible(true);
-    	AgregarEnPosicionMascota.mascotaTemporal = new Mascota(Integer.valueOf(txtIdentificacionMascota.getText()), txtNombreMascota.getText(), txtRazaMascota.getText(), txtColorMascota.getText());
+    	AgregarEnPosicionMascota vista = new AgregarEnPosicionMascota(mascotas);
+    	vista.mascotaTemporal = new Mascota(Integer.valueOf(txtIdentificacionMascota.getText()), txtNombreMascota.getText(), txtRazaMascota.getText(), txtColorMascota.getText());
+    	vista.setVisible(true);
     	dispose();
     }                                                          
 
@@ -224,7 +240,7 @@ public class AgregarMascota extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarMascota().setVisible(true);
+                new AgregarMascota(null).setVisible(true);
             }
         });
     }

@@ -15,6 +15,8 @@ import mascotas.Mainn;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AgregarEnPosicionCliente extends JFrame {
 
@@ -77,7 +79,30 @@ public class AgregarEnPosicionCliente extends JFrame {
 			}
 		});
 		txtDespuesDeEsteCodigo = new javax.swing.JTextField();
+		txtDespuesDeEsteCodigo.addKeyListener(new KeyAdapter() {
+
+//		Validación del ingreso de datos al txt
+			public void keyTyped(KeyEvent e) {
+				if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+			}
+		});
 		txtAntesDeEsteCodigo = new javax.swing.JTextField();
+		txtAntesDeEsteCodigo.addKeyListener(new KeyAdapter() {
+			
+//		Metódo que indica si cuando la persona ingresa un valor es un texto en un campo que solo es númerico
+//		NO permite que ingrese texto, entonces pregunta en el if si lo que ingresan es un dígito consume,
+//		pero si es letra no lo consume.
+			
+			public void keyTyped(KeyEvent e) {
+				if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+			}
+		});
 		btnCancelarPosicion = new javax.swing.JButton();
 		btnCancelarPosicion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

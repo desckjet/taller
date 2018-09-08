@@ -9,10 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import mascotas.Mainn;
+import mascotas.centralMascota;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class EliminarMascota extends JFrame {
 
@@ -21,7 +24,9 @@ public class EliminarMascota extends JFrame {
 	 /**
      * Creates new form EliminarMascota
      */
-    public EliminarMascota() {
+	private centralMascota mascotas;
+    public EliminarMascota(centralMascota mascotas) {
+    	this.mascotas = mascotas;
 	 	setTitle("ELIMINAR MASCOTA");
 	 	setType(Type.POPUP);
         initComponents();
@@ -37,19 +42,29 @@ public class EliminarMascota extends JFrame {
     private void initComponents() {
 
         txtIdentificacionMascotaEliminar = new javax.swing.JTextField();
+        txtIdentificacionMascotaEliminar.addKeyListener(new KeyAdapter() {
+
+//      Validación ingreso de texto
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         btnEliminarMascota = new javax.swing.JButton();
         btnEliminarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Mainn.mascota.eliminarMascota(Integer.valueOf(txtIdentificacionMascotaEliminar.getText()));
-        		JOptionPane.showConfirmDialog(null, "Se ha eliminado exitosamente");
-        		new GestionDeMascotas().setVisible(true);
+        		mascotas.eliminarMascota(Integer.valueOf(txtIdentificacionMascotaEliminar.getText()));
+        		JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente");
+        		new GestionDeMascotas(mascotas).setVisible(true);
         		EliminarMascota.this.dispose();
         	}
         });
         btnCancelarEliminarMascota = new javax.swing.JButton();
         btnCancelarEliminarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		new GestionDeMascotas().setVisible(true);
+        		new GestionDeMascotas(mascotas).setVisible(true);
         		EliminarMascota.this.dispose();
         	}
         });
@@ -132,7 +147,7 @@ public class EliminarMascota extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EliminarMascota().setVisible(true);
+                new EliminarMascota(null).setVisible(true);
             }
         });
     }

@@ -14,6 +14,8 @@ import mascotas.Mainn;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class EliminarCliente extends JFrame {
 
@@ -37,6 +39,16 @@ public class EliminarCliente extends JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txtIdentificacionClienteEliminar = new javax.swing.JTextField();
+        txtIdentificacionClienteEliminar.addKeyListener(new KeyAdapter() {
+
+//      Validación ingreso de texto  	
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         btnEliminarCliente = new javax.swing.JButton();
         btnEliminarCliente.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {

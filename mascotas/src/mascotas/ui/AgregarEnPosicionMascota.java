@@ -11,10 +11,13 @@ import javax.swing.border.EmptyBorder;
 import exceptions.NoExisteException;
 import mascotas.Mainn;
 import mascotas.Mascota;
+import mascotas.centralMascota;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AgregarEnPosicionMascota extends JFrame {
 
@@ -22,7 +25,10 @@ public class AgregarEnPosicionMascota extends JFrame {
 	/**
      * Creates new form AgregarEnPosicionMascota
      */
-    public AgregarEnPosicionMascota() {
+	private centralMascota mascotas;
+	
+    public AgregarEnPosicionMascota(centralMascota mascotas) {
+    	this.mascotas = mascotas;
 		setTitle("AGREGAR MASCOTA");
 		setType(Type.POPUP);
         initComponents();
@@ -40,7 +46,8 @@ public class AgregarEnPosicionMascota extends JFrame {
         btnCancelarPosicionMascota = new javax.swing.JButton();
         btnCancelarPosicionMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		new AgregarMascota();
+        		GestionDeMascotas vista = new GestionDeMascotas(mascotas);
+        		vista.setVisible(true);
         		AgregarEnPosicionMascota.this.dispose();
         	}
         });
@@ -50,14 +57,14 @@ public class AgregarEnPosicionMascota extends JFrame {
         		
         		switch (bandera) {
 				case 0:
-					Mainn.mascota.insertarAlComienzo(mascotaTemporal);
+					mascotas.insertarAlComienzo(mascotaTemporal);
 					break;
 				case 1:
-					Mainn.mascota.insertarAlFinal(mascotaTemporal);
+					mascotas.insertarAlFinal(mascotaTemporal);
 					break;
 				case 2:
 					try {
-						Mainn.mascota.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigoMascota.getText()),
+						mascotas.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigoMascota.getText()),
 								mascotaTemporal);
 
 					} catch (NoExisteException e2) {
@@ -69,7 +76,7 @@ public class AgregarEnPosicionMascota extends JFrame {
 					break;
 				case 3:
 					try {
-						Mainn.mascota.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigoMascota.getText()),
+						mascotas.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigoMascota.getText()),
 								mascotaTemporal);
 
 					} catch (NoExisteException e2) {
@@ -83,9 +90,11 @@ public class AgregarEnPosicionMascota extends JFrame {
 				default:
 					break;
 				}
-        		JOptionPane.showConfirmDialog(null, "Se ha agregado exitosamente");
+        		JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente");
         		AgregarEnPosicionMascota.this.dispose();
-        		new GestionDeMascotas().setVisible(true);
+        		
+        		GestionDeMascotas vista = new GestionDeMascotas(mascotas);
+        		vista.setVisible(true);
         	}
         });
         jPanel1 = new javax.swing.JPanel();
@@ -122,7 +131,26 @@ public class AgregarEnPosicionMascota extends JFrame {
         	}
         });
         txtDespuesDeEsteCodigoMascota = new javax.swing.JTextField();
+        txtDespuesDeEsteCodigoMascota.addKeyListener(new KeyAdapter() {
+//      Validación ingreso de texto.
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
+        
         txtAntesDeEsteCodigoMascota = new javax.swing.JTextField();
+        txtAntesDeEsteCodigoMascota.addKeyListener(new KeyAdapter() {
+//          Validación ingreso de texto.
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -234,7 +262,7 @@ public class AgregarEnPosicionMascota extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarEnPosicionMascota().setVisible(true);
+                new AgregarEnPosicionMascota(null).setVisible(true);
             }
         });
     }

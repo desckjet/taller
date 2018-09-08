@@ -17,6 +17,8 @@ import java.awt.Window.Type;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class BuscarCliente extends JFrame {
 
@@ -45,6 +47,16 @@ public class BuscarCliente extends JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtIdentificacionClienteBuscar = new javax.swing.JTextField();
+        txtIdentificacionClienteBuscar.addKeyListener(new KeyAdapter() {
+
+//      Validación ingreso de texto.
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         btnBuscarCliente = new javax.swing.JButton();
         btnBuscarCliente.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {

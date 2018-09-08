@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import mascotas.Mainn;
+import mascotas.centralMascota;
 import modelo.miModeloMascota;
 
 import java.awt.event.ActionListener;
@@ -27,7 +28,8 @@ public class GestionDeMascotas extends JFrame {
     /**
      * Creates new form GestionDeMascotas
      */
-    public GestionDeMascotas() {
+    public GestionDeMascotas(centralMascota mascotasCliente) {
+    	this.mascotasCliente = mascotasCliente;
     	setFont(new Font("Comic Sans MS", Font.BOLD, 12));
     	setType(Type.POPUP);
     	setTitle("GESTIÓN DE MASCOTAS");
@@ -46,7 +48,7 @@ public class GestionDeMascotas extends JFrame {
         BtnEliminarMascota = new javax.swing.JButton();
         BtnEliminarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		new EliminarMascota().setVisible(true);
+        		new EliminarMascota(mascotasCliente).setVisible(true);
         		GestionDeMascotas.this.dispose();
         	}
         });
@@ -55,14 +57,14 @@ public class GestionDeMascotas extends JFrame {
         btnAgregarMascota = new javax.swing.JButton();
         btnAgregarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		new AgregarMascota().setVisible(true);
+        		new AgregarMascota(mascotasCliente).setVisible(true);
         		GestionDeMascotas.this.dispose();
         	}
         });
         btnBuscarMascota = new javax.swing.JButton();
         btnBuscarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		new BuscarMascota().setVisible(true);
+        		new BuscarMascota(mascotasCliente).setVisible(true);
         		GestionDeMascotas.this.dispose();
         	}
         });
@@ -73,7 +75,7 @@ public class GestionDeMascotas extends JFrame {
 
         //tableMascota.setModel(new miModeloMascota(Mainn.mascota));
         
-        tableMascota.setModel(new miModeloMascota(Mainn.cliente.verMascotas(GestionDeClientes.valor)));
+        tableMascota.setModel(new miModeloMascota(mascotasCliente));
         tableMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableClientesMouseClicked(evt);
@@ -160,13 +162,6 @@ public class GestionDeMascotas extends JFrame {
             java.util.logging.Logger.getLogger(GestionDeMascotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestionDeMascotas().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify                     
@@ -175,4 +170,5 @@ public class GestionDeMascotas extends JFrame {
     private javax.swing.JButton btnBuscarMascota;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableMascota;
+    private centralMascota mascotasCliente;
 }

@@ -9,10 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import mascotas.Mainn;
+import mascotas.centralMascota;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class BuscarMascota extends JFrame {
 
@@ -21,7 +24,9 @@ public class BuscarMascota extends JFrame {
 	/**
 	 * Creates new form BuscarMascota
 	 */
-	public BuscarMascota() {
+	private centralMascota mascotas;
+	public BuscarMascota(centralMascota mascotas) {
+		this.mascotas = mascotas;
 		setTitle("BUSCAR MASCOTA");
 		setType(Type.POPUP);
 		initComponents();
@@ -38,23 +43,34 @@ public class BuscarMascota extends JFrame {
 
 		jLabel1 = new javax.swing.JLabel();
 		txtIdentificacionMascotaBuscar = new javax.swing.JTextField();
+		txtIdentificacionMascotaBuscar.addKeyListener(new KeyAdapter() {
+
+//		Validación ingreso de texto.
+			public void keyTyped(KeyEvent e) {
+				if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+			}
+		});
 		btnBuscarMascota = new javax.swing.JButton();
 		btnBuscarMascota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (Mainn.mascota.buscarMascota(Integer.valueOf(txtIdentificacionMascotaBuscar.getText())) != null) {
+				if (BuscarMascota.this.mascotas.buscarMascota(Integer.valueOf(txtIdentificacionMascotaBuscar.getText())) != null) {
 					JOptionPane.showMessageDialog(null, "La mascota si existe");
 				} else {
 					JOptionPane.showMessageDialog(null, "La mascota no existe");
 				}
 				dispose();
-				new GestionDeMascotas().setVisible(true);
+				GestionDeMascotas vista = new GestionDeMascotas(mascotas);
+				vista.setVisible(true);
 			}
 		});
 		btnCancelarBuscarMascota = new javax.swing.JButton();
 		btnCancelarBuscarMascota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GestionDeMascotas().setVisible(true);
-				BuscarMascota.this.dispose();
+				GestionDeMascotas vista = new GestionDeMascotas(mascotas);
+				vista.setVisible(true);
 			}
 		});
 
@@ -142,7 +158,7 @@ public class BuscarMascota extends JFrame {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new BuscarMascota().setVisible(true);
+				new BuscarMascota(null).setVisible(true);
 			}
 		});
 	}

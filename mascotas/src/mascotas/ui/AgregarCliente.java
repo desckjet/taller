@@ -10,6 +10,7 @@ import javax.swing.border.TitledBorder;
 
 import mascotas.Cliente;
 import mascotas.Mainn;
+import mascotas.centralMascota;
 
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
@@ -18,6 +19,8 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Window.Type;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 /**
@@ -49,9 +52,27 @@ public class AgregarCliente extends javax.swing.JFrame {
         jPanel1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Informaci\u00F3n", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
         txtDireccionCliente = new javax.swing.JTextField();
         txtTelefonoCliente = new javax.swing.JTextField();
+        txtTelefonoCliente.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         lbIdentificacionCliente = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtIdentificacionCliente = new javax.swing.JTextField();
+        txtIdentificacionCliente.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isDigit(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         lbDireccionCliente = new javax.swing.JLabel();
         lbTelefonoCliente = new javax.swing.JLabel();
         txtNombreCliente = new javax.swing.JTextField();
@@ -196,7 +217,7 @@ public class AgregarCliente extends javax.swing.JFrame {
 
     private void btnContinuarAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                           
     	new AgregarEnPosicionCliente().setVisible(true);
-    	AgregarEnPosicionCliente.clienteTemporal = new Cliente(Integer.valueOf(txtIdentificacionCliente.getText()), txtNombreCliente.getText(), txtDireccionCliente.getText(), (Integer.valueOf(txtTelefonoCliente.getText())), null);
+    	AgregarEnPosicionCliente.clienteTemporal = new Cliente(Integer.valueOf(txtIdentificacionCliente.getText()), txtNombreCliente.getText(), txtDireccionCliente.getText(), (Integer.valueOf(txtTelefonoCliente.getText())), new centralMascota());
     	this.dispose();
     }                                                          
 
