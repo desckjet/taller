@@ -1,7 +1,5 @@
 package mascotas;
 
-import exceptions.NoExisteException;
-
 public class centralMascota {
 
 	public Mascota primero;
@@ -59,31 +57,39 @@ public class centralMascota {
 
 	}
 
-	public void insertarAntesDe(int codigo, Mascota n) throws NoExisteException {
-
-		Mascota anterior = localizarAnterior(codigo);
-
-		if (anterior == null) {
-			insertarInicio(n);
-		} else {
-			n.setAnteriorMascota(anterior);
-			n.setSiguienteMascota(anterior.getSiguienteMascota());
-			anterior.getSiguienteMascota().setAnteriorMascota(n);
-			anterior.setSiguienteMascota(n);
-		}
-	}
-
-	public void insertarDespuesDe(int codigo, Mascota n) throws NoExisteException {
+	public Boolean insertarAntesDe(int codigo, Mascota n){
 
 		Mascota actual = buscarMascota(codigo);
 
 		if (actual == null) {
-			throw new NoExisteException();
+			return false;
+		}else if(actual.getAnteriorMascota() == null) {
+			insertarAlComienzo(n);
+			return true;
+		} else {
+			n.setAnteriorMascota(actual.getAnteriorMascota());
+			n.setSiguienteMascota(actual);
+			actual.getAnteriorMascota().setSiguienteMascota(n);
+			actual.setAnteriorMascota(n);
+			return true;
+		}
+	}
+
+	public Boolean insertarDespuesDe(int codigo, Mascota n){
+
+		Mascota actual = buscarMascota(codigo);
+
+		if (actual == null) {
+			return false;
+		} else if (actual.getSiguienteMascota() == null) {
+			insertarAlFinal(n);
+			return true;
 		} else {
 			n.setAnteriorMascota(actual);
 			n.setSiguienteMascota(actual.getSiguienteMascota());
 			actual.getSiguienteMascota().setAnteriorMascota(n);
 			actual.setSiguienteMascota(n);
+			return true;
 		}
 	}
 
@@ -138,7 +144,7 @@ public class centralMascota {
 
 	}
 
-	public void eliminarMascota(int codigo) {
+	public Boolean eliminarMascota(int codigo) {
 
 		Mascota actual = buscarMascota(codigo);
 
@@ -146,12 +152,17 @@ public class centralMascota {
 			if (actual.getAnteriorMascota() == null) {
 				primero = actual.getSiguienteMascota();
 				primero.setAnteriorMascota(null);
+				return true;
 			} else if (actual.getSiguienteMascota() == null) {
 				actual.getAnteriorMascota().setSiguienteMascota(null);
+				return true;
 			} else {
 				actual.getAnteriorMascota().setSiguienteMascota(actual.getSiguienteMascota());
 				actual.getSiguienteMascota().setAnteriorMascota(actual.getAnteriorMascota());
+				return true;
 			}
+		} else {
+			return false;
 		}
 
 	}

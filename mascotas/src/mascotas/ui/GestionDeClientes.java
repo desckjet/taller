@@ -1,19 +1,19 @@
 package mascotas.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import mascotas.Mainn;
 import modelo.miModeloCliente;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
  *
@@ -22,7 +22,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class GestionDeClientes extends javax.swing.JFrame {
 
 	public static int filaSeleccionada;
-	public static int valor;
 	
 	/**
 	 * Creates new form GestionDeClientes
@@ -46,8 +45,8 @@ public class GestionDeClientes extends javax.swing.JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int row = tableClientes.getSelectedRow();
 				if (row > -1) {
-					identificacionCliente = (Integer) tableClientes.getValueAt(row, 0);
-					btnVerMascotas.setEnabled(true);
+					//identificacionCliente = (Integer) tableClientes.getValueAt(row, 0);
+					//btnVerMascotas.setEnabled(true);
 				}
 			}
 		});
@@ -71,7 +70,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 		btnVerMascotas.setEnabled(false);
 		btnVerMascotas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (identificacionCliente != null) {
+				if (identificacionCliente != 0) {
 					GestionDeMascotas vista = new GestionDeMascotas(Mainn.cliente.buscarCliente(identificacionCliente).getMascota());
 					vista.setVisible(true);
 					GestionDeClientes.this.dispose();
@@ -99,7 +98,8 @@ public class GestionDeClientes extends javax.swing.JFrame {
 				// TODO Auto-generated method stub
 				if(! model.isSelectionEmpty()) {
 					filaSeleccionada = model.getMinSelectionIndex();
-					valor = (int) tableClientes.getValueAt(filaSeleccionada, 0);
+					identificacionCliente = (int) tableClientes.getValueAt(filaSeleccionada, 0);
+					btnVerMascotas.setEnabled(true);
 				}
 			}
 		});
@@ -208,7 +208,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 	private javax.swing.JButton btnBuscarCliente;
 	private javax.swing.JButton btnVerMascotas;
 	private javax.swing.JScrollPane jScrollPane2;
-	private Integer identificacionCliente;
+	private int identificacionCliente = 0;
 	public static javax.swing.JTable tableClientes;
 	// End of variables declaration
 }

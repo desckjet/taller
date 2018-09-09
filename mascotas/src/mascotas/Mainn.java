@@ -1,41 +1,31 @@
 package mascotas;
 
-import exceptions.NoExisteException;
-import mascotas.ui.GestionDeClientes;
 import mascotas.ui.MenuPrincipal;
 
 public class Mainn {
 	//Se crean globales para que no se vayan a perder
 	public static centralCliente cliente = new centralCliente();
-//	public static centralMascota mascota = new centralMascota();
-//	public static centralMascota mascota2 = new centralMascota();
-//	public static centralMascota mascota3 = new centralMascota();
+	public static centralMascota mascota = new centralMascota();
+	public static centralMascota mascota2 = new centralMascota();
+	public static centralMascota mascota3 = new centralMascota();
 	
-	public static void main(String[] args) throws NoExisteException {
-		
+	public static void main(String[] args){
 		
 //		Aquí estan los datos, si se quieren pasar quemados
 //		centralMascota mascota = new centralMascota();
-//		mascota.insertarAlFinal(new Mascota(1,"humo","malamute","rojo"));
-//		mascota.insertarAlFinal(new Mascota(2,"carbon","murcielago","verde"));
-//		mascota.insertarAlFinal(new Mascota(3,"n^2","rinoceronte","azul"));
+		mascota.insertarAlFinal(new Mascota(1,"humo","malamute","rojo"));
+		mascota.insertarAlFinal(new Mascota(2,"carbon","murcielago","verde"));
+		mascota.insertarAlFinal(new Mascota(3,"n^2","rinoceronte","azul"));
 //		
-//		mascota2.insertarAlFinal(new Mascota(1,"kody","lobo","blanco"));
-//		mascota2.insertarAlFinal(new Mascota(2,"berta","toro","cafe"));
+		mascota2.insertarAlFinal(new Mascota(1,"kody","lobo","blanco"));
+		mascota2.insertarAlFinal(new Mascota(2,"berta","toro","cafe"));
 //		
-//		mascota3.insertarAlFinal(new Mascota(1,"holi","lobo","blanco"));
-//		mascota3.insertarAlFinal(new Mascota(2,"laura","toro","cafe"));
+		mascota3.insertarAlFinal(new Mascota(1,"holi","lobo","blanco"));
+		mascota3.insertarAlFinal(new Mascota(2,"laura","toro","cafe"));
 		
-		/* PUEDE SER
-		 * Cliente cli = new Cliente(4, "x", "gfs", 456, null);
-		 
-		cli.setMascota(mascota);*/
-		
-//		cliente.insertarFinal(new Cliente(1, "negro", "cra 28 # 45-26", 4523105, mascota));
-//		cliente.insertarFinal(new Cliente(5, "juicio", "cll 58 # 12-32", 4103652,mascota2));
-//		cliente.insertarFinal(new Cliente(6, "pedro", "cra 56 # 02-75", 9632051,mascota3));
-//		cliente.insertarFinal(new Cliente(7, "nulll", "cra 78 # 62-05", 5412035,null));
-//		cliente.insertarFinal(new Cliente(8, "chon", "cll 20 # 120-327", 7412035,null));
+		cliente.insertarFinal(new Cliente(1, "negro", "cra 28 # 45-26", 4523105, mascota));
+		cliente.insertarFinal(new Cliente(5, "juicio", "cll 58 # 12-32", 4103652,mascota2));
+		cliente.insertarFinal(new Cliente(6, "pedro", "cra 56 # 02-75", 9632051,mascota3));
 		
 		/*cliente.insertarInicio(new Cliente(1, "negro", "cra 28 # 45-26", 4523105, mascota));
 		cliente.insertarInicio(new Cliente(2, "juicio", "cll 58 # 12-32", 4103652,mascota2));
@@ -46,14 +36,14 @@ public class Mainn {
 		//cliente.insertarAntesDe(1, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 		//cliente.insertarDespuesDe(3, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 
-		// lista todos los clientes
+		
 		//cliente.listar();
-		//System.out.println(cliente.verMascotas(0));
+		
 		//cliente.verMascotas(1);
-		//System.out.println(cliente.buscarCliente(5).getMascota());
+		
 		// mascota.eliminarMascota(1);
 		//mascota.insertarAlComienzo(new Mascota(4, "fsfnombre", "raza", "color"));
-
+		//mascota.insertarDespuesDe(3, new Mascota(4, "fsfnombre", "raza", "color"));
 		
 		new MenuPrincipal().setVisible(true);
 		

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Window.Type;
@@ -41,13 +42,30 @@ public class AgregarMascota extends JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel1.setBorder(new TitledBorder(null, "Informaci\u00F3n", TitledBorder.CENTER, TitledBorder.TOP, null, null));
         txtRazaMascota = new javax.swing.JTextField();
+        txtRazaMascota.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isAlphabetic(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         txtColorMascota = new javax.swing.JTextField();
+        txtColorMascota.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isAlphabetic(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         lbIdentificacionMascota = new javax.swing.JLabel();
         lbNombreMascota = new javax.swing.JLabel();
         txtIdentificacionMascota = new javax.swing.JTextField();
         txtIdentificacionMascota.addKeyListener(new KeyAdapter() {
-
-//      Validación ingreso de texto
+        	@Override
         	public void keyTyped(KeyEvent e) {
         		if (!Character.isDigit(e.getKeyChar())) {
         			e.consume();
@@ -58,6 +76,15 @@ public class AgregarMascota extends JFrame {
         lbRazaMascota = new javax.swing.JLabel();
         lbColorMascota = new javax.swing.JLabel();
         txtNombreMascota = new javax.swing.JTextField();
+        txtNombreMascota.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isAlphabetic(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         jPanel2 = new javax.swing.JPanel();
         btnCancelarAgregarMascota = new javax.swing.JButton();
         btnContinuarAgregarMascota = new javax.swing.JButton();
@@ -203,11 +230,16 @@ public class AgregarMascota extends JFrame {
     	dispose();
     }                                                         
 
-    private void btnContinuarAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {                                                           
-    	AgregarEnPosicionMascota vista = new AgregarEnPosicionMascota(mascotas);
-    	vista.mascotaTemporal = new Mascota(Integer.valueOf(txtIdentificacionMascota.getText()), txtNombreMascota.getText(), txtRazaMascota.getText(), txtColorMascota.getText());
-    	vista.setVisible(true);
-    	dispose();
+    private void btnContinuarAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {
+    	if(txtIdentificacionMascota.getText().isEmpty() || txtNombreMascota.getText().isEmpty() || txtRazaMascota.getText().isEmpty() || txtColorMascota.getText().isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "rellene los campos vacios", "Advertencia", JOptionPane.WARNING_MESSAGE);
+    	} else {
+    		AgregarEnPosicionMascota vista = new AgregarEnPosicionMascota(mascotas);
+        	vista.mascotaTemporal = new Mascota(Integer.valueOf(txtIdentificacionMascota.getText()), txtNombreMascota.getText(), txtRazaMascota.getText(), txtColorMascota.getText());
+        	vista.setVisible(true);
+        	dispose();
+    	}
+  
     }                                                          
 
     /**

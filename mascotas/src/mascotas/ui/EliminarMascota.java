@@ -55,10 +55,18 @@ public class EliminarMascota extends JFrame {
         btnEliminarMascota = new javax.swing.JButton();
         btnEliminarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		mascotas.eliminarMascota(Integer.valueOf(txtIdentificacionMascotaEliminar.getText()));
-        		JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente");
-        		new GestionDeMascotas(mascotas).setVisible(true);
-        		EliminarMascota.this.dispose();
+        		if(! txtIdentificacionMascotaEliminar.getText().isEmpty()) {
+        			if(mascotas.eliminarMascota(Integer.valueOf(txtIdentificacionMascotaEliminar.getText())) != false) {
+        				JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente");
+            			new GestionDeMascotas(mascotas).setVisible(true);
+            			EliminarMascota.this.dispose();
+        			} else {
+        				JOptionPane.showMessageDialog(null, "la mascota ingresada no existe" , "Advertencia", JOptionPane.WARNING_MESSAGE);
+        			}
+        			
+        		} else {
+        			JOptionPane.showMessageDialog(null, "ingrese la identificacion de la mascota", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        		}
         	}
         });
         btnCancelarEliminarMascota = new javax.swing.JButton();

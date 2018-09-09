@@ -56,14 +56,19 @@ public class BuscarMascota extends JFrame {
 		btnBuscarMascota = new javax.swing.JButton();
 		btnBuscarMascota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (BuscarMascota.this.mascotas.buscarMascota(Integer.valueOf(txtIdentificacionMascotaBuscar.getText())) != null) {
-					JOptionPane.showMessageDialog(null, "La mascota si existe");
+				if(! txtIdentificacionMascotaBuscar.getText().isEmpty()) {
+					if (BuscarMascota.this.mascotas.buscarMascota(Integer.valueOf(txtIdentificacionMascotaBuscar.getText())) != null) {
+						JOptionPane.showMessageDialog(null, "La mascota si existe");
+					} else {
+						JOptionPane.showMessageDialog(null, "La mascota no existe");
+					}
+					dispose();
+					GestionDeMascotas vista = new GestionDeMascotas(mascotas);
+					vista.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(null, "La mascota no existe");
+					JOptionPane.showMessageDialog(null, "ingrese la identificacion de la mascota" , "Advertencia", JOptionPane.WARNING_MESSAGE);
 				}
-				dispose();
-				GestionDeMascotas vista = new GestionDeMascotas(mascotas);
-				vista.setVisible(true);
+				
 			}
 		});
 		btnCancelarBuscarMascota = new javax.swing.JButton();

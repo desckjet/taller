@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -76,6 +77,15 @@ public class AgregarCliente extends javax.swing.JFrame {
         lbDireccionCliente = new javax.swing.JLabel();
         lbTelefonoCliente = new javax.swing.JLabel();
         txtNombreCliente = new javax.swing.JTextField();
+        txtNombreCliente.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		if (!Character.isAlphabetic(e.getKeyChar())) {
+        			e.consume();
+                }
+                return;
+        	}
+        });
         jPanel2 = new javax.swing.JPanel();
         btnCancelarAgregarCliente = new javax.swing.JButton();
         btnContinuarAgregarCliente = new javax.swing.JButton();
@@ -216,9 +226,15 @@ public class AgregarCliente extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void btnContinuarAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                           
-    	new AgregarEnPosicionCliente().setVisible(true);
-    	AgregarEnPosicionCliente.clienteTemporal = new Cliente(Integer.valueOf(txtIdentificacionCliente.getText()), txtNombreCliente.getText(), txtDireccionCliente.getText(), (Integer.valueOf(txtTelefonoCliente.getText())), new centralMascota());
-    	this.dispose();
+    	
+    	if(txtIdentificacionCliente.getText().isEmpty() || txtNombreCliente.getText().isEmpty() || txtDireccionCliente.getText().isEmpty() || txtTelefonoCliente.getText().isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "rellene los campos vacios","Advertencia", JOptionPane.WARNING_MESSAGE);
+    	} else {
+    		new AgregarEnPosicionCliente().setVisible(true);
+    		AgregarEnPosicionCliente.clienteTemporal = new Cliente(Integer.valueOf(txtIdentificacionCliente.getText()), txtNombreCliente.getText(), txtDireccionCliente.getText(), (Integer.valueOf(txtTelefonoCliente.getText())), new centralMascota());
+    		this.dispose();
+    	}
+    	
     }                                                          
 
     private void btnCancelarAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {    

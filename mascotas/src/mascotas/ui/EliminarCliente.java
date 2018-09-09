@@ -1,21 +1,14 @@
 package mascotas.ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-import exceptions.NoExisteException;
 import mascotas.Mainn;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class EliminarCliente extends JFrame {
 
@@ -52,19 +45,17 @@ public class EliminarCliente extends JFrame {
         btnEliminarCliente = new javax.swing.JButton();
         btnEliminarCliente.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		try {
-					Mainn.cliente.eliminar(Integer.valueOf(txtIdentificacionClienteEliminar.getText()));
-				} catch (NumberFormatException e1) {
-					JOptionPane.showMessageDialog(EliminarCliente.this, "Recuerde que solo puede ingresar el código", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-					e1.printStackTrace();
-				} catch (NoExisteException e1) {
-					JOptionPane.showMessageDialog(EliminarCliente.this, "El cliente no exite", "ERROR", JOptionPane.ERROR_MESSAGE);
-					e1.printStackTrace();
-				}
-        	
-        		JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente");
-        		EliminarCliente.this.dispose();
-        		new GestionDeClientes().setVisible(true);
+        		if(! txtIdentificacionClienteEliminar.getText().isEmpty()) {
+        			if(Mainn.cliente.eliminar(Integer.valueOf(txtIdentificacionClienteEliminar.getText())) != null) {
+        				JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente");
+                		EliminarCliente.this.dispose();
+                		new GestionDeClientes().setVisible(true);
+        			} else {
+        				JOptionPane.showMessageDialog(null, "el cliente ingresado no existe");
+        			}
+        		} else {
+        			JOptionPane.showMessageDialog(null, "ingrese la identificacion del cliente");
+        		}
         	}
         });
         btnCancelarEliminarCliente = new javax.swing.JButton();

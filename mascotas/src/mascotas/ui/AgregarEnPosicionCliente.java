@@ -1,22 +1,16 @@
 package mascotas.ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-import exceptions.NoExisteException;
 import mascotas.Cliente;
 import mascotas.Mainn;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class AgregarEnPosicionCliente extends JFrame {
 
@@ -119,42 +113,40 @@ public class AgregarEnPosicionCliente extends JFrame {
 					switch (bandera) {
 					case 0:
 						Mainn.cliente.insertarInicio(clienteTemporal);
+						JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente");
+						AgregarEnPosicionCliente.this.dispose();
+						new GestionDeClientes().setVisible(true);
 						break;
 					case 1:
 						Mainn.cliente.insertarFinal(clienteTemporal);
+						JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente");
+						AgregarEnPosicionCliente.this.dispose();
+						new GestionDeClientes().setVisible(true);
 						break;
 					case 2:
-						try {
-							Mainn.cliente.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigo.getText()),
-									clienteTemporal);
-
-						} catch (NoExisteException e2) {
-							JOptionPane.showMessageDialog(AgregarEnPosicionCliente.this,
-									"No hay un código como referencia.", "ERROR", JOptionPane.ERROR_MESSAGE);// Mensaje
-																												// bonito
-							return;
+						if(Mainn.cliente.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigo.getText()),clienteTemporal) != null) {
+							JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente","Correcto", JOptionPane.INFORMATION_MESSAGE);
+							AgregarEnPosicionCliente.this.dispose();
+							new GestionDeClientes().setVisible(true);
+						} else {
+							JOptionPane.showMessageDialog(null, "el cliente que selecciono no existe" , "Error" , JOptionPane.ERROR_MESSAGE);
+							new AgregarCliente().setVisible(true);
 						}
 						break;
 					case 3:
-						try {
-							Mainn.cliente.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigo.getText()),
-									clienteTemporal);
-
-						} catch (NoExisteException e2) {
-							JOptionPane.showMessageDialog(AgregarEnPosicionCliente.this,
-									"No hay un código como referencia.", "ERROR", JOptionPane.ERROR_MESSAGE);// Mensaje
-																												// bonito
-							return;
+						if(Mainn.cliente.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigo.getText()),clienteTemporal) != null) {
+							JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente","Correcto", JOptionPane.INFORMATION_MESSAGE);
+							AgregarEnPosicionCliente.this.dispose();
+							new GestionDeClientes().setVisible(true);
+						} else {
+							JOptionPane.showMessageDialog(null, "el cliente que selecciono no existe" , "Error" , JOptionPane.ERROR_MESSAGE);
+							new AgregarCliente().setVisible(true);
 						}
 
 						break;
 					default:
 						break;
 					}
-
-					JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente");
-					AgregarEnPosicionCliente.this.dispose();
-					new GestionDeClientes().setVisible(true);
 
 				} else {
 				JOptionPane.showMessageDialog(AgregarEnPosicionCliente.this, "No has seleccionado ninguna opción", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
