@@ -3,17 +3,17 @@ package mascotas;
 public class centralMascota {
 
 	public Mascota primero;
-
-	public void listar() {
-
-		Mascota actual = primero;
-
-		while (actual != null) {
-			System.out.println(actual.getNombre());
-			actual = actual.getSiguienteMascota();
+	
+	public void insertarAlComienzo (Mascota n) {
+		
+		if (primero == null) {
+			primero = n;
+		} else {
+			n.setSiguienteMascota(primero);
+			primero = n;
 		}
 	}
-
+	
 	public void insertarAlFinal(Mascota n) {
 
 		Mascota actual = primero;
@@ -35,14 +35,7 @@ public class centralMascota {
 
 	}
 
-	public void insertarAlComienzo (Mascota n) {
-		if (primero == null) {
-			primero = n;
-		} else {
-			n.setSiguienteMascota(primero);
-			primero = n;
-		}
-	}
+	
 	public Mascota localizarAnterior(int codigo) {
 
 		Mascota anterior = null;
@@ -139,7 +132,6 @@ public class centralMascota {
 		while (actual != null && actual.getIdentificacion() != codigo) {
 			actual = actual.getSiguienteMascota();
 		}
-
 		return actual;
 
 	}
@@ -165,18 +157,6 @@ public class centralMascota {
 			return false;
 		}
 
-	}
-
-	public String toString() {
-		String mensaje = ("la mascota se llama " + primero.getNombre());
-		return mensaje;
-
-	}
-
-	public Mascota sig() {
-
-		primero = primero.getSiguienteMascota();
-		return primero;
 	}
 
 }

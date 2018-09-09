@@ -91,13 +91,13 @@ public class AgregarMascota extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbIdentificacionMascota.setText("Identificación:");
+        lbIdentificacionMascota.setText("*Identificación:");
 
-        lbNombreMascota.setText("Nombre:");
+        lbNombreMascota.setText("*Nombre:");
 
-        lbRazaMascota.setText("Raza:");
+        lbRazaMascota.setText("*Raza:");
 
-        lbColorMascota.setText("Color:");
+        lbColorMascota.setText("*Color:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

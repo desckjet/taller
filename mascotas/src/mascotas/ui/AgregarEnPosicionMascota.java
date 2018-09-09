@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 import mascotas.Mascota;
 import mascotas.centralMascota;
 
+import javax.swing.ButtonGroup;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+
 public class AgregarEnPosicionMascota extends JFrame {
 
 	private JPanel contentPane;
@@ -35,6 +39,8 @@ public class AgregarEnPosicionMascota extends JFrame {
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
+		btns = new ButtonGroup();
+		
 
 		btnCancelarPosicionMascota = new javax.swing.JButton();
 		btnCancelarPosicionMascota.addActionListener(new ActionListener() {
@@ -51,44 +57,57 @@ public class AgregarEnPosicionMascota extends JFrame {
 				switch (bandera) {
 				case 0:
 					mascotas.insertarAlComienzo(mascotaTemporal);
-					JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente");
+					JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente la mascota");
 					AgregarEnPosicionMascota.this.dispose();
+					new AgregarMascota(mascotas).setVisible(true);
 					break;
 				case 1:
 					mascotas.insertarAlFinal(mascotaTemporal);
-					JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente");
+					JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente la mascota");
 					AgregarEnPosicionMascota.this.dispose();
+					new AgregarMascota(mascotas).setVisible(true);;
 					break;
 				case 2:
+					if(txtAntesDeEsteCodigoMascota.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia", "Advertencia", JOptionPane.WARNING_MESSAGE);
+					} else {
+					
 					if (mascotas.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigoMascota.getText()),
 							mascotaTemporal) != false) {
 						JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente", "Correcto",
 								JOptionPane.INFORMATION_MESSAGE);
 						AgregarEnPosicionMascota.this.dispose();
+						new AgregarMascota(mascotas).setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "la mascota que selecciono no existe", "Error",
 								JOptionPane.ERROR_MESSAGE);
-						new AgregarMascota(mascotas);
+								
+					}
 					}
 					break;
 				case 3:
+					if(txtDespuesDeEsteCodigoMascota.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia", "Advertencia", JOptionPane.WARNING_MESSAGE);
+					} else {
+					
 					if (mascotas.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigoMascota.getText()),
 							mascotaTemporal) != false) {
 						JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente", "Correcto",
 								JOptionPane.INFORMATION_MESSAGE);
 						AgregarEnPosicionMascota.this.dispose();
+						new AgregarMascota(mascotas).setVisible(true);
 					} else {
-						JOptionPane.showMessageDialog(null, "la mascota que selecciono no existe", "Error",
+						JOptionPane.showMessageDialog(null, "la mascota que selecciono no exi queste", "Error",
 								JOptionPane.ERROR_MESSAGE);
-						new AgregarMascota(mascotas);
+						
 					}
 
+					}
 					break;
 				default:
 					break;
 				}
-				GestionDeMascotas vista = new GestionDeMascotas(mascotas);
-				vista.setVisible(true);
+			
 			}
 		});
 		jPanel1 = new javax.swing.JPanel();
@@ -164,42 +183,6 @@ public class AgregarEnPosicionMascota extends JFrame {
 
 		rbtDespuesMascota.setText("Después de la mascota con el código:");
 
-		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addComponent(rbtAlFinalMascota, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
-				.addGroup(jPanel1Layout.createSequentialGroup()
-						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(rbtAntesMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 263,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(rbtDespuesMascota))
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(txtDespuesDeEsteCodigoMascota).addComponent(txtAntesDeEsteCodigoMascota))
-						.addContainerGap())
-				.addComponent(rbtAlComienzoMascota, javax.swing.GroupLayout.DEFAULT_SIZE,
-						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel1Layout.createSequentialGroup().addGap(7, 7, 7)
-						.addComponent(rbtAlComienzoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(rbtAlFinalMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(rbtAntesMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtAntesDeEsteCodigoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
-										javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(rbtDespuesMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtDespuesDeEsteCodigoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
-										javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +210,45 @@ public class AgregarEnPosicionMascota extends JFrame {
 								.addComponent(btnFinalizarPosicionMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 44,
 										javax.swing.GroupLayout.PREFERRED_SIZE))
 						.addGap(14, 14, 14)));
-
+		GroupLayout gl_jPanel1 = new GroupLayout(jPanel1);
+		gl_jPanel1.setHorizontalGroup(
+			gl_jPanel1.createParallelGroup(Alignment.LEADING)
+				.addComponent(rbtAlComienzoMascota, GroupLayout.PREFERRED_SIZE, 456, GroupLayout.PREFERRED_SIZE)
+				.addComponent(rbtAlFinalMascota, GroupLayout.PREFERRED_SIZE, 456, GroupLayout.PREFERRED_SIZE)
+				.addGroup(gl_jPanel1.createSequentialGroup()
+					.addComponent(rbtAntesMascota, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE)
+					.addGap(13)
+					.addComponent(txtAntesDeEsteCodigoMascota, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_jPanel1.createSequentialGroup()
+					.addComponent(rbtDespuesMascota)
+					.addGap(6)
+					.addComponent(txtDespuesDeEsteCodigoMascota, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_jPanel1.setVerticalGroup(
+			gl_jPanel1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_jPanel1.createSequentialGroup()
+					.addGap(7)
+					.addComponent(rbtAlComienzoMascota, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(rbtAlFinalMascota, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addGroup(gl_jPanel1.createParallelGroup(Alignment.LEADING)
+						.addComponent(rbtAntesMascota, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_jPanel1.createSequentialGroup()
+							.addGap(1)
+							.addComponent(txtAntesDeEsteCodigoMascota, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)))
+					.addGap(6)
+					.addGroup(gl_jPanel1.createParallelGroup(Alignment.LEADING)
+						.addComponent(rbtDespuesMascota, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_jPanel1.createSequentialGroup()
+							.addGap(1)
+							.addComponent(txtDespuesDeEsteCodigoMascota, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))))
+		);
+		jPanel1.setLayout(gl_jPanel1);
+		btns.add(rbtAlComienzoMascota);
+		btns.add(rbtAlFinalMascota);
+		btns.add(rbtAntesMascota);
+		btns.add(rbtDespuesMascota);
 		pack();
 	}// </editor-fold>
 
@@ -283,6 +304,7 @@ public class AgregarEnPosicionMascota extends JFrame {
 	private javax.swing.JRadioButton rbtDespuesMascota;
 	private javax.swing.JTextField txtAntesDeEsteCodigoMascota;
 	private javax.swing.JTextField txtDespuesDeEsteCodigoMascota;
+	private ButtonGroup btns;
 	public static Mascota mascotaTemporal;
 	private int bandera = 0;
 	// End of variables declaration

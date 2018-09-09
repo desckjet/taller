@@ -10,6 +10,7 @@ public class Cliente {
 	private centralMascota mascota;
 
 	public Cliente(int identificacion, String nombre, String direccion, int telefono, centralMascota mascota) {
+
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.direccion = direccion;

@@ -10,6 +10,7 @@ public class Mascota {
 	private Mascota anteriorMascota;
 
 	public Mascota(int identificacion, String nombre, String raza, String color) {
+		
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.raza = raza;

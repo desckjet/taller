@@ -92,13 +92,13 @@ public class AgregarCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbIdentificacionCliente.setText("Identificación:");
+        lbIdentificacionCliente.setText("*Identificación:");
 
-        jLabel2.setText("Nombre:");
+        jLabel2.setText("*Nombre:");
 
-        lbDireccionCliente.setText("Dirección:");
+        lbDireccionCliente.setText("*Dirección:");
 
-        lbTelefonoCliente.setText("Teléfono:");
+        lbTelefonoCliente.setText("*Teléfono:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -228,7 +228,7 @@ public class AgregarCliente extends javax.swing.JFrame {
     private void btnContinuarAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                           
     	
     	if(txtIdentificacionCliente.getText().isEmpty() || txtNombreCliente.getText().isEmpty() || txtDireccionCliente.getText().isEmpty() || txtTelefonoCliente.getText().isEmpty()) {
-    		JOptionPane.showMessageDialog(null, "rellene los campos vacios","Advertencia", JOptionPane.WARNING_MESSAGE);
+    		JOptionPane.showMessageDialog(null, "Recuerde que todos los campos son obligatorios","Advertencia", JOptionPane.WARNING_MESSAGE);
     	} else {
     		new AgregarEnPosicionCliente().setVisible(true);
     		AgregarEnPosicionCliente.clienteTemporal = new Cliente(Integer.valueOf(txtIdentificacionCliente.getText()), txtNombreCliente.getText(), txtDireccionCliente.getText(), (Integer.valueOf(txtTelefonoCliente.getText())), new centralMascota());

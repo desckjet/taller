@@ -124,6 +124,10 @@ public class AgregarEnPosicionCliente extends JFrame {
 						new GestionDeClientes().setVisible(true);
 						break;
 					case 2:
+						if(txtAntesDeEsteCodigo.getText().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia", "Advertencia", JOptionPane.WARNING_MESSAGE);
+						} else {
+							
 						if(Mainn.cliente.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigo.getText()),clienteTemporal) != null) {
 							JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente","Correcto", JOptionPane.INFORMATION_MESSAGE);
 							AgregarEnPosicionCliente.this.dispose();
@@ -132,8 +136,13 @@ public class AgregarEnPosicionCliente extends JFrame {
 							JOptionPane.showMessageDialog(null, "el cliente que selecciono no existe" , "Error" , JOptionPane.ERROR_MESSAGE);
 							new AgregarCliente().setVisible(true);
 						}
+						}
 						break;
 					case 3:
+						if(txtDespuesDeEsteCodigo.getText().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia", "Advertencia", JOptionPane.WARNING_MESSAGE);
+						} else {
+						
 						if(Mainn.cliente.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigo.getText()),clienteTemporal) != null) {
 							JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente","Correcto", JOptionPane.INFORMATION_MESSAGE);
 							AgregarEnPosicionCliente.this.dispose();
@@ -142,7 +151,7 @@ public class AgregarEnPosicionCliente extends JFrame {
 							JOptionPane.showMessageDialog(null, "el cliente que selecciono no existe" , "Error" , JOptionPane.ERROR_MESSAGE);
 							new AgregarCliente().setVisible(true);
 						}
-
+						}
 						break;
 					default:
 						break;
