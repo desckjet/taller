@@ -24,7 +24,7 @@ public class AgregarEnPosicionCliente extends JFrame {
 		setType(Type.POPUP);
 		initComponents();
 	}
-	
+
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,23 +78,23 @@ public class AgregarEnPosicionCliente extends JFrame {
 //		Validación del ingreso de datos al txt
 			public void keyTyped(KeyEvent e) {
 				if (!Character.isDigit(e.getKeyChar())) {
-        			e.consume();
-                }
-                return;
+					e.consume();
+				}
+				return;
 			}
 		});
 		txtAntesDeEsteCodigo = new javax.swing.JTextField();
 		txtAntesDeEsteCodigo.addKeyListener(new KeyAdapter() {
-			
+
 //		Metódo que indica si cuando la persona ingresa un valor es un texto en un campo que solo es númerico
 //		NO permite que ingrese texto, entonces pregunta en el if si lo que ingresan es un dígito consume,
 //		pero si es letra no lo consume.
-			
+
 			public void keyTyped(KeyEvent e) {
 				if (!Character.isDigit(e.getKeyChar())) {
-        			e.consume();
-                }
-                return;
+					e.consume();
+				}
+				return;
 			}
 		});
 		btnCancelarPosicion = new javax.swing.JButton();
@@ -124,33 +124,39 @@ public class AgregarEnPosicionCliente extends JFrame {
 						new GestionDeClientes().setVisible(true);
 						break;
 					case 2:
-						if(txtAntesDeEsteCodigo.getText().isEmpty()) {
-							JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia", "Advertencia", JOptionPane.WARNING_MESSAGE);
+						if (txtAntesDeEsteCodigo.getText().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia",
+									"Advertencia", JOptionPane.WARNING_MESSAGE);
 						} else {
-							
-						if(Mainn.cliente.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigo.getText()),clienteTemporal) != null) {
-							JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente","Correcto", JOptionPane.INFORMATION_MESSAGE);
-							AgregarEnPosicionCliente.this.dispose();
-							new GestionDeClientes().setVisible(true);
-						} else {
-							JOptionPane.showMessageDialog(null, "el cliente que selecciono no existe" , "Error" , JOptionPane.ERROR_MESSAGE);
-							new AgregarCliente().setVisible(true);
-						}
+
+							if (Mainn.cliente.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigo.getText()),
+									clienteTemporal) != null) {
+								JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente", "Correcto",
+										JOptionPane.INFORMATION_MESSAGE);
+								AgregarEnPosicionCliente.this.dispose();
+								new GestionDeClientes().setVisible(true);
+							} else {
+								JOptionPane.showMessageDialog(AgregarEnPosicionCliente.this, "el cliente que selecciono no existe", "Error",
+										JOptionPane.ERROR_MESSAGE);
+							}
 						}
 						break;
 					case 3:
-						if(txtDespuesDeEsteCodigo.getText().isEmpty()) {
-							JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia", "Advertencia", JOptionPane.WARNING_MESSAGE);
+						if (txtDespuesDeEsteCodigo.getText().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia",
+									"Advertencia", JOptionPane.WARNING_MESSAGE);
 						} else {
-						
-						if(Mainn.cliente.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigo.getText()),clienteTemporal) != null) {
-							JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente","Correcto", JOptionPane.INFORMATION_MESSAGE);
-							AgregarEnPosicionCliente.this.dispose();
-							new GestionDeClientes().setVisible(true);
-						} else {
-							JOptionPane.showMessageDialog(null, "el cliente que selecciono no existe" , "Error" , JOptionPane.ERROR_MESSAGE);
-							new AgregarCliente().setVisible(true);
-						}
+
+							if (Mainn.cliente.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigo.getText()),
+									clienteTemporal) != null) {
+								JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente", "Correcto",
+										JOptionPane.INFORMATION_MESSAGE);
+								AgregarEnPosicionCliente.this.dispose();
+								new GestionDeClientes().setVisible(true);
+							} else {
+								JOptionPane.showMessageDialog(AgregarEnPosicionCliente.this, "el cliente que selecciono no existe", "Error",
+										JOptionPane.ERROR_MESSAGE);
+							}
 						}
 						break;
 					default:
@@ -158,7 +164,8 @@ public class AgregarEnPosicionCliente extends JFrame {
 					}
 
 				} else {
-				JOptionPane.showMessageDialog(AgregarEnPosicionCliente.this, "No has seleccionado ninguna opción", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(AgregarEnPosicionCliente.this, "No has seleccionado ninguna opción",
+							"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
@@ -307,6 +314,6 @@ public class AgregarEnPosicionCliente extends JFrame {
 	private javax.swing.JTextField txtAntesDeEsteCodigo;
 	private javax.swing.JTextField txtDespuesDeEsteCodigo;
 	public static Cliente clienteTemporal;
-	private int bandera = 0;// Por defecto con el int se inicializa en o con Integer si hay que inicializar
+	private int bandera = 0;
 	// End of variables declaration
 }

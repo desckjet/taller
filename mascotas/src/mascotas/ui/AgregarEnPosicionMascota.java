@@ -38,6 +38,7 @@ public class AgregarEnPosicionMascota extends JFrame {
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
+		
 		btns = new ButtonGroup();
 
 		btnCancelarPosicionMascota = new javax.swing.JButton();
@@ -52,58 +53,64 @@ public class AgregarEnPosicionMascota extends JFrame {
 		btnFinalizarPosicionMascota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				switch (bandera) {
-				case 0:
-					mascotas.insertarAlComienzo(mascotaTemporal);
-					JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente la mascota");
-					AgregarEnPosicionMascota.this.dispose();
-					break;
-				case 1:
-					mascotas.insertarAlFinal(mascotaTemporal);
-					JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente la mascota");
-					AgregarEnPosicionMascota.this.dispose();
-					break;
-				case 2:
-					if (txtAntesDeEsteCodigoMascota.getText().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia",
-								"Advertencia", JOptionPane.WARNING_MESSAGE);
-					} else {
-
-						if (mascotas.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigoMascota.getText()),
-								mascotaTemporal) != false) {
-							JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente", "Correcto",
-									JOptionPane.INFORMATION_MESSAGE);
-							AgregarEnPosicionMascota.this.dispose();
+				if (btns.getSelection() != null) {
+					switch (bandera) {
+					case 0:
+						mascotas.insertarAlComienzo(mascotaTemporal);
+						JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente la mascota");
+						AgregarEnPosicionMascota.this.dispose();
+						new GestionDeMascotas(mascotas).setVisible(true);
+						break;
+					case 1:
+						mascotas.insertarAlFinal(mascotaTemporal);
+						JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente la mascota");
+						AgregarEnPosicionMascota.this.dispose();
+						new GestionDeMascotas(mascotas).setVisible(true);
+						break;
+					case 2:
+						if (txtAntesDeEsteCodigoMascota.getText().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia",
+									"Advertencia", JOptionPane.WARNING_MESSAGE);
 						} else {
-							JOptionPane.showMessageDialog(null, "la mascota que selecciono no existe", "Error",
-									JOptionPane.ERROR_MESSAGE);
 
+							if (mascotas.insertarAntesDe(Integer.valueOf(txtAntesDeEsteCodigoMascota.getText()),
+									mascotaTemporal) != false) {
+								JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente", "Correcto",
+										JOptionPane.INFORMATION_MESSAGE);
+								AgregarEnPosicionMascota.this.dispose();
+								new GestionDeMascotas(mascotas).setVisible(true);
+							} else {
+								JOptionPane.showMessageDialog(AgregarEnPosicionMascota.this,
+										"la mascota que selecciono no existe", "Error", JOptionPane.ERROR_MESSAGE);
+							}
 						}
-					}
-					break;
-				case 3:
-					if (txtDespuesDeEsteCodigoMascota.getText().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia",
-								"Advertencia", JOptionPane.WARNING_MESSAGE);
-					} else {
-
-						if (mascotas.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigoMascota.getText()),
-								mascotaTemporal) != false) {
-							JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente", "Correcto",
-									JOptionPane.INFORMATION_MESSAGE);
-							AgregarEnPosicionMascota.this.dispose();
+						break;
+					case 3:
+						if (txtDespuesDeEsteCodigoMascota.getText().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Primero debes insertar el código de referencia",
+									"Advertencia", JOptionPane.WARNING_MESSAGE);
 						} else {
-							JOptionPane.showMessageDialog(null, "la mascota que selecciono no existe", "Error",
-									JOptionPane.ERROR_MESSAGE);
-						}
 
+							if (mascotas.insertarDespuesDe(Integer.valueOf(txtDespuesDeEsteCodigoMascota.getText()),
+									mascotaTemporal) != false) {
+								JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente", "Correcto",
+										JOptionPane.INFORMATION_MESSAGE);
+								AgregarEnPosicionMascota.this.dispose();
+								new GestionDeMascotas(mascotas).setVisible(true);
+							} else {
+								JOptionPane.showMessageDialog(AgregarEnPosicionMascota.this,
+										"la mascota que selecciono no existe", "Error", JOptionPane.ERROR_MESSAGE);
+							}
+						}
+						break;
+					default:
+						break;
 					}
-					break;
-				default:
-					break;
+
+				} else {
+					JOptionPane.showMessageDialog(AgregarEnPosicionMascota.this, "No has seleccionado ninguna opción",
+							"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
 				}
-				GestionDeMascotas vista = new GestionDeMascotas(mascotas);
-				vista.setVisible(true);
 			}
 		});
 		jPanel1 = new javax.swing.JPanel();
