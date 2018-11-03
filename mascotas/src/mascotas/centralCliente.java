@@ -39,6 +39,7 @@ public class centralCliente {
 		return contador;
 	}
 
+	//Nos trae el cliente en el indice posicion
 	public Cliente buscarPosicion(int posicion) {
 		
 		if (posicion >= this.longitud()) {

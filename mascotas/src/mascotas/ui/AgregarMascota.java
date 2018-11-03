@@ -24,7 +24,7 @@ public class AgregarMascota extends JFrame {
 	private centralMascota mascotas;
 	public AgregarMascota(centralMascota mascotas) {
 		this.mascotas = mascotas;
-	 	setTitle("AGREGAR MASCOTA");
+	 	setTitle("Agregar mascota.");
 	 	setType(Type.POPUP);
         initComponents();
     }

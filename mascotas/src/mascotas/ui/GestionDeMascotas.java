@@ -53,7 +53,7 @@ public class GestionDeMascotas extends JFrame {
         	}
         });
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableMascota = new javax.swing.JTable();
+        tablaMascota = new javax.swing.JTable();
         btnAgregarMascota = new javax.swing.JButton();
         btnAgregarMascota.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -73,21 +73,21 @@ public class GestionDeMascotas extends JFrame {
 
         BtnEliminarMascota.setText("Eliminar");
 
-        //tableMascota.setModel(new miModeloMascota(Mainn.mascota));
+        //tablaMascota.setModel(new miModeloMascota(Mainn.mascota));
         
-        tableMascota.setModel(new miModeloMascota(mascotasCliente));
-        tableMascota.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaMascota.setModel(new miModeloMascota(mascotasCliente));
+        tablaMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableClientesMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tableMascota);
+        jScrollPane2.setViewportView(tablaMascota);
 
         btnAgregarMascota.setText("Agregar");
 
         btnBuscarMascota.setText("Buscar");
         
-        JButton btnAtras = new JButton("Atras");
+        JButton btnAtras = new JButton("Regresar");
         btnAtras.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		new GestionDeClientes().setVisible(true);
@@ -169,6 +169,6 @@ public class GestionDeMascotas extends JFrame {
     private javax.swing.JButton btnAgregarMascota;
     private javax.swing.JButton btnBuscarMascota;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tableMascota;
+    private javax.swing.JTable tablaMascota;
     private centralMascota mascotasCliente;
 }

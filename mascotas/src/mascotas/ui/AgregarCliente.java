@@ -34,7 +34,7 @@ public class AgregarCliente extends javax.swing.JFrame {
      * Creates new form AgregarCliente
      */
     public AgregarCliente() {
-    	setTitle("AGREGAR CLIENTE");
+    	setTitle("Agregar cliente.");
     	setType(Type.POPUP);
         initComponents();
     }
@@ -224,7 +224,7 @@ public class AgregarCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
-
+//Creamos nuestro nuevo cliente, asignandole los valores
     private void btnContinuarAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                           
     	
     	if(txtIdentificacionCliente.getText().isEmpty() || txtNombreCliente.getText().isEmpty() || txtDireccionCliente.getText().isEmpty() || txtTelefonoCliente.getText().isEmpty()) {

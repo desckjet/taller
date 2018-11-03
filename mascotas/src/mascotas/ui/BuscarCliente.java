@@ -29,7 +29,7 @@ public class BuscarCliente extends JFrame {
      * Creates new form BuscarCliente
      */
     public BuscarCliente() {
-    	setTitle("BUSCAR CLIENTE");
+    	setTitle("Buscar cliente.");
     	setType(Type.POPUP);
         initComponents();
     }

@@ -16,7 +16,7 @@ public class EliminarCliente extends JFrame {
      * Creates new form EliminarCliente
      */
     public EliminarCliente() {
-	 	setTitle("ELIMINAR CLIENTE");
+	 	setTitle("Eliminar cliente.");
 	 	setType(Type.POPUP);
         initComponents();
     }

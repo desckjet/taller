@@ -27,7 +27,7 @@ public class EliminarMascota extends JFrame {
 	private centralMascota mascotas;
     public EliminarMascota(centralMascota mascotas) {
     	this.mascotas = mascotas;
-	 	setTitle("ELIMINAR MASCOTA");
+	 	setTitle("Eliminar mascota.");
 	 	setType(Type.POPUP);
         initComponents();
     }

@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionListener;
 
 import mascotas.Mainn;
 import modelo.miModeloCliente;
+import javax.swing.JButton;
 
 /**
  *
@@ -27,6 +28,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 	 * Creates new form GestionDeClientes
 	 */
 	public GestionDeClientes() {
+		setTitle("Gestión de clientes.");
 		initComponents();
 	}
 
@@ -43,14 +45,12 @@ public class GestionDeClientes extends javax.swing.JFrame {
 		jScrollPane2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int row = tableClientes.getSelectedRow();
+				int row = tablaCliente.getSelectedRow();
 				if (row > -1) {
-					//identificacionCliente = (Integer) tableClientes.getValueAt(row, 0);
-					//btnVerMascotas.setEnabled(true);
 				}
 			}
 		});
-		tableClientes = new javax.swing.JTable();
+		tablaCliente = new javax.swing.JTable();
 
 		btnAgregarCliente = new javax.swing.JButton();
 		btnAgregarCliente.addActionListener(new ActionListener() {
@@ -70,7 +70,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 		btnVerMascotas.setEnabled(false);
 		btnVerMascotas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (identificacionCliente != 0) {
+				if (identificacionCliente != -1) {
 					GestionDeMascotas vista = new GestionDeMascotas(Mainn.cliente.buscarCliente(identificacionCliente).getMascota());
 					vista.setVisible(true);
 					GestionDeClientes.this.dispose();
@@ -88,28 +88,26 @@ public class GestionDeClientes extends javax.swing.JFrame {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		tableClientes.setModel(new miModeloCliente(Mainn.cliente));
+		tablaCliente.setModel(new miModeloCliente(Mainn.cliente));
 	
-		ListSelectionModel model = tableClientes.getSelectionModel();
+		ListSelectionModel model = tablaCliente.getSelectionModel();
 		model.addListSelectionListener(new ListSelectionListener() {
 			
-			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
 				if(! model.isSelectionEmpty()) {
 					filaSeleccionada = model.getMinSelectionIndex();
-					identificacionCliente = (int) tableClientes.getValueAt(filaSeleccionada, 0);
+					identificacionCliente = (int) tablaCliente.getValueAt(filaSeleccionada, 0);
 					btnVerMascotas.setEnabled(true);
 				}
 			}
 		});
 		
-		tableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+		tablaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				tableClientesMouseClicked(evt);
 			}
 		});
-		jScrollPane2.setViewportView(tableClientes);
+		jScrollPane2.setViewportView(tablaCliente);
 
 		btnAgregarCliente.setText("Agregar");
 
@@ -118,6 +116,15 @@ public class GestionDeClientes extends javax.swing.JFrame {
 		btnVerMascotas.setText("Ver Mascotas");
 
 		BtnEliminarCliente.setText("Eliminar");
+		
+		JButton btnRegresar = new JButton();
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new MenuPrincipal().setVisible(true);
+				dispose();
+			}
+		});
+		btnRegresar.setText("Regresar");
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		layout.setHorizontalGroup(
@@ -126,7 +133,7 @@ public class GestionDeClientes extends javax.swing.JFrame {
 					.addContainerGap()
 					.addGroup(layout.createParallelGroup(Alignment.LEADING)
 						.addGroup(layout.createSequentialGroup()
-							.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+							.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
 							.addContainerGap())
 						.addGroup(layout.createSequentialGroup()
 							.addComponent(btnAgregarCliente, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
@@ -134,21 +141,24 @@ public class GestionDeClientes extends javax.swing.JFrame {
 							.addComponent(btnBuscarCliente, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(BtnEliminarCliente, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnVerMascotas, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(6, Short.MAX_VALUE))))
+							.addPreferredGap(ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+							.addComponent(btnRegresar, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+							.addGap(21))))
 		);
 		layout.setVerticalGroup(
-			layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+			layout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(layout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(18)
 					.addGroup(layout.createParallelGroup(Alignment.CENTER)
 						.addComponent(btnAgregarCliente, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnBuscarCliente, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
 						.addComponent(BtnEliminarCliente, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnVerMascotas, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnVerMascotas, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnRegresar, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		getContentPane().setLayout(layout);
@@ -208,7 +218,6 @@ public class GestionDeClientes extends javax.swing.JFrame {
 	private javax.swing.JButton btnBuscarCliente;
 	private javax.swing.JButton btnVerMascotas;
 	private javax.swing.JScrollPane jScrollPane2;
-	private int identificacionCliente = 0;
-	public static javax.swing.JTable tableClientes;
-	// End of variables declaration
+	private int identificacionCliente = -1;
+	public static javax.swing.JTable tablaCliente;
 }

@@ -20,7 +20,7 @@ public class AgregarEnPosicionCliente extends JFrame {
 	 * Creates new form AgregarEnPosicionCliente
 	 */
 	public AgregarEnPosicionCliente() {
-		setTitle("AGREGAR CLIENTE");
+		setTitle("Agregar cliente.");
 		setType(Type.POPUP);
 		initComponents();
 	}

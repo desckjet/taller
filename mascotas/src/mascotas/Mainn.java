@@ -8,6 +8,7 @@ public class Mainn {
 	public static centralMascota mascota = new centralMascota();
 	public static centralMascota mascota2 = new centralMascota();
 	public static centralMascota mascota3 = new centralMascota();
+	public static CentralProducto producto = new CentralProducto();
 	
 	public static void main(String[] args){
 		
