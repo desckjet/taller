@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -108,10 +109,24 @@ public class EliminarProducto extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-//    	if(! txtCodigoProductoaEliminar.getText().isEmpty()) {
-//    		if(Mainn.producto.)
-//    		
-//    	}
+    	if(! txtCodigoProductoaEliminar.getText().isEmpty()) {
+    		
+    		if(Mainn.producto.buscarProducto(Mainn.producto.raiz, Integer.valueOf(txtCodigoProductoaEliminar.getText()))!=null) {
+    			int opcionParaEliminar = JOptionPane.showConfirmDialog(null, "Se ha encontrado el producto, ¿esta seguro que desea eliminar?");
+        		if (opcionParaEliminar == JOptionPane.YES_OPTION) {
+        			Mainn.producto.eliminar(Mainn.producto.raiz, Integer.valueOf(txtCodigoProductoaEliminar.getText()));
+        		} else {
+        			JOptionPane.showMessageDialog(null, "Tranquilo :), no se ha eliminado");
+        		}
+				EliminarProducto.this.dispose();
+        		new GestionDeInventario().setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(null, "el producto ingresado no existe");
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "ingrese por favor el código del producto");
+		}
+    		
     }                                                   
 
     /**
