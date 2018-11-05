@@ -28,6 +28,12 @@ public class Mainn {
 		cliente.insertarFinal(new Cliente(5, "juicio", "cll 58 # 12-32", 4103652,mascota2));
 		cliente.insertarFinal(new Cliente(6, "pedro", "cra 56 # 02-75", 9632051,mascota3));
 		
+		
+		producto.insertarProducto(producto.raiz, new Producto(1, "a", "a", "asads", 123));
+		producto.insertarProducto(producto.raiz, new Producto(2, "b", "a", "asads", 124));
+		producto.insertarProducto(producto.raiz, new Producto(3, "c", "a", "asads", 125));
+		producto.insertarProducto(producto.raiz, new Producto(4, "d", "a", "asads", 126));
+		producto.insertarProducto(producto.raiz, new Producto(5, "e", "a", "asads", 127));
 		/*cliente.insertarInicio(new Cliente(1, "negro", "cra 28 # 45-26", 4523105, mascota));
 		cliente.insertarInicio(new Cliente(2, "juicio", "cll 58 # 12-32", 4103652,mascota2));
 		cliente.insertarInicio(new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));

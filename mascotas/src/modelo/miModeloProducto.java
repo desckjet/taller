@@ -5,15 +5,17 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 import mascotas.CentralProducto;
+import mascotas.Producto;
 
 public class miModeloProducto implements TableModel {
-	
-	private CentralProducto arbol;
-	private String tipo;
-	private TableModelListener onAddListenerCliente; //pendiente de cuando hace una acción, cuando agrega algo va a hacer lo que tiene el listener
-	private TableModelListener onRemoveListenerCliente;
 
-	public miModeloProducto(CentralProducto arbol, String tipo) {this.arbol = arbol; this.tipo = tipo;}
+	private CentralProducto arbol;
+	private String type;
+
+	public miModeloProducto(CentralProducto arbol, String type) {
+		this.arbol = arbol;
+		this.type = type;
+	}
 
 	@Override
 	public int getRowCount() {
@@ -29,13 +31,13 @@ public class miModeloProducto implements TableModel {
 	public String getColumnName(int columnIndex) {
 		switch (columnIndex) {
 		case 0:
-			return "Código";
+			return "Codigo";
 		case 1:
 			return "Nombre";
 		case 2:
-			return "Descripción";
+			return "Descripcion";
 		case 3:
-			return "Presentación";
+			return "Presentacion";
 		case 4:
 			return "Unidades en existencia";
 		default:
@@ -68,54 +70,42 @@ public class miModeloProducto implements TableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-//		Producto producto = arbol.buscarPosicionProducto(rowIndex);
-//		switch (columnIndex) {
-//		case 0:
-//			return producto.getCodigo();
-//		case 1:
-//			return producto.getNombre();
-//		case 2:
-//			return producto.getDescripcion();
-//		case 3:
-//			return producto.getPresentacion();
-//		case 4:
-//			return producto.getUnidadesInventario();
-//		default:
+		Producto producto = null;
+		if(this.type.equalsIgnoreCase("inorder") || this.type.equalsIgnoreCase("postorder")) {
+			producto = arbol.buscarProductoEnPosPosorderInorder(arbol.raiz, rowIndex);
+		} else {
+			producto = arbol.buscarProductoEnPosPreorder(arbol.raiz, rowIndex);
+		}
+		
+		switch (columnIndex) {
+		case 0:
+			return producto.getCodigo();
+		case 1:
+			return producto.getNombre();
+		case 2:
+			return producto.getDescripcion();
+		case 3:
+			return producto.getPresentacion();
+		case 4:
+			return producto.getUnidadesInventario();
+		default:
 			return null;
-//		}
+		}
 	}
 
-//	@Override
+	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
-//		Producto producto = arbol.buscarPosicionProducto(rowIndex);
-//		switch (columnIndex) {
-//		case 0:
-//			producto.setCodigo(Integer.valueOf((Integer)aValue));
-//			break;
-//		case 1:
-//			producto.setNombre(String.valueOf(aValue));
-//			break;
-//		case 2:
-//			producto.setPresentacion(String.valueOf(aValue)); 
-//			break;
-//		case 3:
-//			producto.setDescripcion(String.valueOf(aValue)); 
-//			break;
-//		case 4:
-//			producto.setUnidadesInventario(Integer.valueOf((Integer)aValue));
-//			break;
-//		default:
-//			JOptionPane.showMessageDialog(null, "Lo que intenta ingresar no corresponde a ningun campo.");
-		}
-//	}
+	}
 
 	@Override
 	public void addTableModelListener(TableModelListener l) {
-		this.onAddListenerCliente = l;}
-		
+
+	}
+
 	@Override
 	public void removeTableModelListener(TableModelListener l) {
-		this.onRemoveListenerCliente = l;}
-		
+
+	}
+
 }

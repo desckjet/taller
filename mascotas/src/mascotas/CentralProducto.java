@@ -1,5 +1,9 @@
 package mascotas;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class CentralProducto {
 
 	public static Producto raiz;
@@ -127,5 +131,65 @@ public class CentralProducto {
 		} else {
 			raiz = nuevo;
 		}
+	}
+	
+	public Producto buscarProductoEnPosPosorderInorder(Producto raiz, int pos) {
+		int counter = 0;
+		Stack<Producto> stack = new Stack<>();
+		Producto actual = raiz;
+		while (!stack.isEmpty() || actual != null) {
+			if (actual != null) {
+				stack.add(actual);
+				actual = actual.getProductoIzquierda();
+			} else {
+				actual = stack.pop();
+				if (counter == pos) {
+					return actual;
+				}
+				counter++;
+				actual = actual.getProductoDerecha();
+			}
+		}
+		return null;
+	}
+	
+	public Producto buscarProductoEnPosPreorder(Producto raiz, int pos) {
+		int counter = 0;
+		Stack<Producto> stack = new Stack<>();
+		Producto actual = raiz;
+		while (!stack.isEmpty() || actual != null) {
+			if (actual != null) {
+				stack.add(actual);
+				actual = actual.getProductoDerecha();
+			} else {
+				actual = stack.pop();
+				if (counter == pos) {
+					return actual;
+				}
+				counter++;
+				actual = actual.getProductoIzquierda();
+			}
+		}
+		return null;
+	}
+	
+	public Producto buscarProductoEnPosInOrder(Producto raiz, int pos) {
+		int counter = 0;
+		Stack<Producto> stack = new Stack<>();
+		Producto actual = raiz;
+		while (!stack.isEmpty() || actual != null) {
+			if (actual != null) {
+				stack.add(actual);
+				actual = actual.getProductoDerecha();
+			} else {
+				actual = stack.pop();
+				if (counter == pos) {
+					return actual;
+				}
+				counter++;
+				actual = actual.getProductoIzquierda();
+			}
+		}
+		return null;
 	}
 }
