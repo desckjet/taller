@@ -18,13 +18,13 @@ public class CentralProducto {
 		}
 	}
 
-	public int tamaño() {
-		return tamaño(raiz);
+	public int tamano() {
+		return tamano(raiz);
 	}
 
-	private int tamaño(Producto contarRaiz) {
+	private int tamano(Producto contarRaiz) {
 		if (contarRaiz != null)
-			return 1 + tamaño(contarRaiz.getProductoIzquierda()) + tamaño(contarRaiz.getProductoDerecha());
+			return 1 + tamano(contarRaiz.getProductoIzquierda()) + tamano(contarRaiz.getProductoDerecha());
 		return 0;
 	}
 
