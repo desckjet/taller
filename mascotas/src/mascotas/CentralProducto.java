@@ -48,67 +48,67 @@ public class CentralProducto {
 		}
 	}
 
-	public void eliminar(Producto padre, int contenido) {
-
-		if (this.raiz != null) {
-			if (padre.getProductoDerecha().getCodigo() == contenido) {
-				eliminarHijo(padre, padre.getProductoDerecha());
-			} else if (padre.getProductoIzquierda().getCodigo() == contenido) {
-				eliminarHijo(padre, padre.getProductoIzquierda());
-			} else {
-				eliminar(padre.getProductoDerecha(), contenido);
-				eliminar(padre.getProductoIzquierda(), contenido);
-			}
-		}
-	}
-
-	private void eliminarHijo(Producto padre, Producto hijo) {
-
-		if (padre.getProductoDerecha().getCodigo() == hijo.getCodigo()) {
-			if (hijo.getProductoDerecha() != null) {
-				Producto temporalHijoIzquierdo = null;
-				if (hijo.getProductoIzquierda() != null) {
-					temporalHijoIzquierdo = hijo.getProductoIzquierda();
-				}
-				padre.setProductoDerecha(hijo.getProductoDerecha());
-				if (temporalHijoIzquierdo != null)
-					insertarProducto(padre, temporalHijoIzquierdo);
-			} else if (hijo.getProductoIzquierda() != null) {
-				padre.setProductoDerecha(hijo.getProductoIzquierda());
-			}
-		} else {
-			if (hijo.getProductoDerecha() != null) {
-				Producto temporalHijoIzquierdo = null;
-				if (hijo.getProductoIzquierda() != null) {
-					temporalHijoIzquierdo = hijo.getProductoIzquierda();
-				}
-				padre.setProductoIzquierda(hijo.getProductoDerecha());
-				insertarProducto(padre, temporalHijoIzquierdo);
-			} else if (hijo.getProductoIzquierda() != null) {
-				padre.setProductoIzquierda(hijo.getProductoIzquierda());
-			}
-		}
-
-	}
-
-	public Producto buscarProducto(Producto raiz, int buscar) {
-		if (this.raiz != null) {
-			if (raiz.getCodigo() == buscar) {
-				return raiz;
-			}
-			if (raiz.getCodigo() > buscar) {
-				if (raiz.getProductoIzquierda().getCodigo() == buscar) {
-					return raiz.getProductoIzquierda();
-				}
-				buscarProducto(raiz.getProductoIzquierda(), buscar);
-			} else {
-				if (raiz.getProductoIzquierda().getCodigo() == buscar) {
-					return raiz.getProductoDerecha();
-				}
-				buscarProducto(raiz.getProductoDerecha(), buscar);
-			}
-		}
-		return null;
+	// This method mainly calls deleteRec() 
+    public void eliminar(int key) 
+    { 
+        raiz = deleteRec(raiz, key); 
+    } 
+  
+    /* A recursive function to insert a new key in BST */
+    Producto deleteRec(Producto root, int key) 
+    { 
+        /* Base Case: If the tree is empty */
+        if (root == null)  return root; 
+  
+        /* Otherwise, recur down the tree */
+        if (key < root.getCodigo()) 
+            root.setProductoIzquierda(deleteRec(root.getProductoIzquierda(), key)); 
+        else if (key > root.getCodigo()) 
+            root.setProductoDerecha(deleteRec(root.getProductoDerecha(), key));
+  
+        // if key is same as root's key, then This is the node 
+        // to be deleted 
+        else
+        { 
+            // node with only one child or no child 
+            if (root.getProductoIzquierda() == null) 
+                return root.getProductoDerecha(); 
+            else if (root.getProductoDerecha() == null) 
+                return root.getProductoIzquierda(); 
+  
+            // node with two children: Get the inorder successor (smallest 
+            // in the right subtree) 
+            root.setCodigo(minValue(root.getProductoDerecha())); 
+  
+            // Delete the inorder successor 
+            root.setProductoDerecha(deleteRec(root.getProductoDerecha(), root.getCodigo()));
+        } 
+  
+        return root; 
+    } 
+  
+    int minValue(Producto root) 
+    { 
+        int minv = root.getCodigo(); 
+        while (root.getProductoIzquierda() != null) 
+        { 
+            minv = root.getProductoIzquierda().getCodigo(); 
+            root = root.getProductoIzquierda(); 
+        } 
+        return minv; 
+    } 
+	
+	public Producto buscarProducto(Producto raiz, int key) {
+		// Base Cases: root is null or key is present at root 
+	    if (raiz==null || raiz.getCodigo()==key) 
+	        return raiz; 
+	  
+	    // val is greater than root's key 
+	    if (raiz.getCodigo() > key) 
+	        return buscarProducto(raiz.getProductoIzquierda(), key); 
+	  
+	    // val is less than root's key 
+	    return buscarProducto(raiz.getProductoDerecha(), key);
 	}
 
 	public void insertarProducto(Producto actual, Producto nuevo) {
@@ -132,7 +132,7 @@ public class CentralProducto {
 			raiz = nuevo;
 		}
 	}
-	
+
 	public Producto buscarProductoEnPosPosorderInorder(Producto raiz, int pos) {
 		int counter = 0;
 		Stack<Producto> stack = new Stack<>();
@@ -152,7 +152,7 @@ public class CentralProducto {
 		}
 		return null;
 	}
-	
+
 	public Producto buscarProductoEnPosPreorder(Producto raiz, int pos) {
 		int counter = 0;
 		Stack<Producto> stack = new Stack<>();
@@ -172,7 +172,7 @@ public class CentralProducto {
 		}
 		return null;
 	}
-	
+
 	public Producto buscarProductoEnPosInOrder(Producto raiz, int pos) {
 		int counter = 0;
 		Stack<Producto> stack = new Stack<>();

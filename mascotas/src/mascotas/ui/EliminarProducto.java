@@ -114,7 +114,7 @@ public class EliminarProducto extends javax.swing.JFrame {
     		if(Mainn.producto.buscarProducto(Mainn.producto.raiz, Integer.valueOf(txtCodigoProductoaEliminar.getText()))!=null) {
     			int opcionParaEliminar = JOptionPane.showConfirmDialog(null, "Se ha encontrado el producto, ¿esta seguro que desea eliminar?");
         		if (opcionParaEliminar == JOptionPane.YES_OPTION) {
-        			Mainn.producto.eliminar(Mainn.producto.raiz, Integer.valueOf(txtCodigoProductoaEliminar.getText()));
+        			Mainn.producto.eliminar(Integer.valueOf(txtCodigoProductoaEliminar.getText()));
         		} else {
         			JOptionPane.showMessageDialog(null, "Tranquilo :), no se ha eliminado");
         		}

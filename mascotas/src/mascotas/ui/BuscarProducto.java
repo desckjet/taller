@@ -57,7 +57,7 @@ public class BuscarProducto extends javax.swing.JFrame {
         			}else {
         				JOptionPane.showMessageDialog(null, "El producto No existe");
         			}
-        			new GestionDeClientes().setVisible(true);
+        			new GestionDeInventario().setVisible(true);
         			dispose();
         		} else {
         			JOptionPane.showMessageDialog(null, "Por favor ingrese el código del producto a buscar", "Advertencia", JOptionPane.WARNING_MESSAGE);

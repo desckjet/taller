@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import mascotas.Cliente;
+import mascotas.Mainn;
 import mascotas.Producto;
 import mascotas.centralMascota;
 import java.awt.event.KeyAdapter;
@@ -254,6 +255,7 @@ public class AgregarNuevoProducto extends javax.swing.JFrame {
     	} else {
     		Producto p = new Producto(Integer.valueOf(txtCodigoNuevoProducto.getText()), txtNombreNuevoProducto.getText(), txtDescripcionNuevoProducto.getText(), txtPresentacionNuevoProducto.getText(), Integer.valueOf(txtUnidadesNuevoProducto.getText()));
     		new GestionDeInventario().setVisible(true);
+    		Mainn.producto.insertarProducto(Mainn.producto.raiz, p);
     		this.dispose();
     	}    	
 }                                                          
