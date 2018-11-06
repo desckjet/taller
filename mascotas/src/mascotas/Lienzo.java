@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Lienzo extends JPanel implements MouseListener {
 
@@ -41,9 +42,22 @@ public class Lienzo extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		String[] array = { "", "", "", "" };
+		JTextField txtNombre = new JTextField();
+		JTextField txtDireccion = new JTextField();
+		JTextField txtTelefono = new JTextField();
+		JTextField txtPaginaweb = new JTextField();
+		Object[] message = { "Nombre", txtNombre, "Direccion:", txtDireccion, "Telefono:", txtTelefono, "Pagina web:",
+				txtPaginaweb, };
 		if (e.getButton() == MouseEvent.BUTTON1) {
-			String nombre = JOptionPane.showInputDialog("Ingrese nombre del nodo: ");
-			Lienzo.vectorNodos.add(new Establecimiento(e.getX(), e.getY(), id, nombre));
+			int option = JOptionPane.showConfirmDialog(null, message, "llenar campos", JOptionPane.OK_CANCEL_OPTION);
+			if (option == JOptionPane.OK_OPTION) {
+				array[0] = txtNombre.getText();
+				array[1] = txtDireccion.getText();
+				array[2] = txtTelefono.getText();
+				array[3] = txtPaginaweb.getText();
+				Lienzo.vectorNodos.add(new Establecimiento(e.getX(), e.getY(), id, array[0]));
+			}
 			id++;
 			tam = vectorNodos.size();
 			matriz = new int[tam][tam];
@@ -59,7 +73,7 @@ public class Lienzo extends JPanel implements MouseListener {
 				}
 			}
 			Vector<Enlace> vectorEnlacesEliminar = new Vector<>();
-			
+
 			for (Enlace enlace : vectorEnlaces) {
 				if ((enlace.getX1() == est.getX() && enlace.getY1() == est.getY())
 						|| (enlace.getX2() == est.getX() && enlace.getY2() == est.getY())) {
@@ -114,22 +128,23 @@ public class Lienzo extends JPanel implements MouseListener {
 		return a;
 	}
 
-	public Vector<Establecimiento> buscarParticular(String nombre, Vector<Establecimiento> vectorNodos, Vector<Enlace> vectorEnlaces) {
+	public Vector<Establecimiento> buscarParticular(String nombre, Vector<Establecimiento> vectorNodos,
+			Vector<Enlace> vectorEnlaces) {
 		int x = 0;
 		int y = 0;
 		int x2 = 0;
 		int y2 = 0;
 		Vector<Establecimiento> vectorParticular = new Vector<>();
-		for(Establecimiento establecimiento : vectorNodos) {
+		for (Establecimiento establecimiento : vectorNodos) {
 			if (nombre.equals(establecimiento.getNombre())) {
 				x = establecimiento.getX();
 				y = establecimiento.getY();
 				for (Enlace enlace : vectorEnlaces) {
-					if(enlace.getX1() == x && enlace.getY1() == y) {
+					if (enlace.getX1() == x && enlace.getY1() == y) {
 						x2 = enlace.getX2();
 						y2 = enlace.getY2();
-						for(Establecimiento establecimiento2 : vectorNodos) {
-							if(establecimiento2.getX() == x2 && establecimiento2.getY() == y2) {
+						for (Establecimiento establecimiento2 : vectorNodos) {
+							if (establecimiento2.getX() == x2 && establecimiento2.getY() == y2) {
 								vectorParticular.add(establecimiento2);
 							}
 						}

@@ -1,7 +1,5 @@
 package mascotas;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 public class CentralProducto {
@@ -12,8 +10,8 @@ public class CentralProducto {
 		if (this.raiz != null) {
 			if (raiz == null)
 				raiz = this.raiz;
-			preorder(raiz.getProductoIzquierda());
 			System.out.println(raiz.getCodigo());
+			preorder(raiz.getProductoIzquierda());
 			preorder(raiz.getProductoDerecha());
 		}
 	}
@@ -42,8 +40,8 @@ public class CentralProducto {
 		if (this.raiz != null) {
 			if (raiz == null)
 				raiz = this.raiz;
-			System.out.println(raiz.getCodigo());
 			preorder(raiz.getProductoIzquierda());
+			System.out.println(raiz.getCodigo());
 			preorder(raiz.getProductoDerecha());
 		}
 	}

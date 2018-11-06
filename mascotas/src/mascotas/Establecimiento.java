@@ -7,6 +7,7 @@ public class Establecimiento {
 	private int x, y;
 	private int id;
 	private String nombre;
+	
 	public static final int d = 60;
 
 	public Establecimiento(int x, int y, int id, String nombre) {
