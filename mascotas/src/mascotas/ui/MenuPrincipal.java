@@ -63,7 +63,7 @@ public class MenuPrincipal extends JFrame {
 		btnGestionarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new GestionDeClientes().setVisible(true);
-				dispose();//oculta ventana
+				dispose();
 			}
 		});
 		
@@ -79,6 +79,12 @@ public class MenuPrincipal extends JFrame {
 		});
 		
 		JButton btnGestionReferencia = new JButton("GESTIÓN RED DE REFERENCIA");
+		btnGestionReferencia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new GestionDeReferencia().setVisible(true);
+				dispose();
+			}
+		});
 		btnGestionReferencia.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		contentPane.add(btnGestionInventario);

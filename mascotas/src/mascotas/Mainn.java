@@ -9,6 +9,7 @@ public class Mainn {
 	public static centralMascota mascota2 = new centralMascota();
 	public static centralMascota mascota3 = new centralMascota();
 	public static CentralProducto producto = new CentralProducto();
+	public static Lienzo lien = new Lienzo();
 	
 	public static void main(String[] args){
 		
@@ -17,10 +18,10 @@ public class Mainn {
 		mascota.insertarAlFinal(new Mascota(1,"humo","malamute","rojo"));
 		mascota.insertarAlFinal(new Mascota(2,"carbon","murcielago","verde"));
 		mascota.insertarAlFinal(new Mascota(3,"n^2","rinoceronte","azul"));
-//		
+		
 		mascota2.insertarAlFinal(new Mascota(1,"kody","lobo","blanco"));
 		mascota2.insertarAlFinal(new Mascota(2,"berta","toro","cafe"));
-//		
+	
 		mascota3.insertarAlFinal(new Mascota(1,"holi","lobo","blanco"));
 		mascota3.insertarAlFinal(new Mascota(2,"laura","toro","cafe"));
 		
@@ -36,7 +37,6 @@ public class Mainn {
 		
 		//cliente.insertarAntesDe(1, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
 		//cliente.insertarDespuesDe(3, new Cliente(3, "pedro", "cra 56 # 02-75", 9632051,null));
-
 		
 		//cliente.listar();
 		
@@ -47,7 +47,6 @@ public class Mainn {
 		//mascota.insertarDespuesDe(3, new Mascota(4, "fsfnombre", "raza", "color"));
 		
 		new MenuPrincipal().setVisible(true);
-		
 		
 	}
 
