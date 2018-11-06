@@ -18,13 +18,13 @@ public class CentralProducto {
 		}
 	}
 
-	public int size() {
-		return size(raiz);
+	public int tamaño() {
+		return tamaño(raiz);
 	}
 
-	private int size(Producto r) {
-		if (r != null)
-			return 1 + size(r.getProductoIzquierda()) + size(r.getProductoDerecha());
+	private int tamaño(Producto contarRaiz) {
+		if (contarRaiz != null)
+			return 1 + tamaño(contarRaiz.getProductoIzquierda()) + tamaño(contarRaiz.getProductoDerecha());
 		return 0;
 	}
 
@@ -48,67 +48,48 @@ public class CentralProducto {
 		}
 	}
 
-	// This method mainly calls deleteRec() 
-    public void eliminar(int key) 
+    public void eliminar(int codigo) 
     { 
-        raiz = deleteRec(raiz, key); 
+        raiz = borrar(raiz, codigo); 
     } 
   
-    /* A recursive function to insert a new key in BST */
-    Producto deleteRec(Producto root, int key) 
+    Producto borrar(Producto producto, int codigo) 
     { 
-        /* Base Case: If the tree is empty */
-        if (root == null)  return root; 
-  
-        /* Otherwise, recur down the tree */
-        if (key < root.getCodigo()) 
-            root.setProductoIzquierda(deleteRec(root.getProductoIzquierda(), key)); 
-        else if (key > root.getCodigo()) 
-            root.setProductoDerecha(deleteRec(root.getProductoDerecha(), key));
-  
-        // if key is same as root's key, then This is the node 
-        // to be deleted 
+        if (producto == null)  return producto; 
+        if (codigo < producto.getCodigo()) 
+        	producto.setProductoIzquierda(borrar(producto.getProductoIzquierda(), codigo)); 
+        else if (codigo > producto.getCodigo()) 
+        	producto.setProductoDerecha(borrar(producto.getProductoDerecha(), codigo));
         else
         { 
-            // node with only one child or no child 
-            if (root.getProductoIzquierda() == null) 
-                return root.getProductoDerecha(); 
-            else if (root.getProductoDerecha() == null) 
-                return root.getProductoIzquierda(); 
-  
-            // node with two children: Get the inorder successor (smallest 
-            // in the right subtree) 
-            root.setCodigo(minValue(root.getProductoDerecha())); 
-  
-            // Delete the inorder successor 
-            root.setProductoDerecha(deleteRec(root.getProductoDerecha(), root.getCodigo()));
+            if (producto.getProductoIzquierda() == null) 
+                return producto.getProductoDerecha(); 
+            else if (producto.getProductoDerecha() == null) 
+                return producto.getProductoIzquierda(); 
+            producto.setCodigo(valorMinimo(producto.getProductoDerecha())); 
+            producto.setProductoDerecha(borrar(producto.getProductoDerecha(), producto.getCodigo()));
         } 
-  
-        return root; 
+        return producto; 
     } 
   
-    int minValue(Producto root) 
+    int valorMinimo(Producto producto) 
     { 
-        int minv = root.getCodigo(); 
-        while (root.getProductoIzquierda() != null) 
+        int minv = producto.getCodigo(); 
+        while (producto.getProductoIzquierda() != null) 
         { 
-            minv = root.getProductoIzquierda().getCodigo(); 
-            root = root.getProductoIzquierda(); 
+            minv = producto.getProductoIzquierda().getCodigo(); 
+            producto = producto.getProductoIzquierda(); 
         } 
         return minv; 
     } 
 	
-	public Producto buscarProducto(Producto raiz, int key) {
-		// Base Cases: root is null or key is present at root 
-	    if (raiz==null || raiz.getCodigo()==key) 
+	public Producto buscarProducto(Producto raiz, int codigo) {
+		
+	    if (raiz==null || raiz.getCodigo()==codigo) 
 	        return raiz; 
-	  
-	    // val is greater than root's key 
-	    if (raiz.getCodigo() > key) 
-	        return buscarProducto(raiz.getProductoIzquierda(), key); 
-	  
-	    // val is less than root's key 
-	    return buscarProducto(raiz.getProductoDerecha(), key);
+	    if (raiz.getCodigo() > codigo) 
+	        return buscarProducto(raiz.getProductoIzquierda(), codigo); 
+	    return buscarProducto(raiz.getProductoDerecha(), codigo);
 	}
 
 	public void insertarProducto(Producto actual, Producto nuevo) {

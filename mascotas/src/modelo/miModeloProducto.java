@@ -19,7 +19,7 @@ public class miModeloProducto implements TableModel {
 
 	@Override
 	public int getRowCount() {
-		return arbol.size();
+		return arbol.tamaño();
 	}
 
 	@Override
