@@ -52,15 +52,15 @@ public class BuscarProducto extends javax.swing.JFrame {
         btnBuscarProducto.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if(!txtCodigoProductoaBuscar.getText().isEmpty()) {
-        			if(Mainn.producto.buscarProducto(null, Integer.valueOf(txtCodigoProductoaBuscar.getText()))!=null) {
+        			if(Mainn.producto.buscarProducto(Mainn.producto.raiz, Integer.valueOf(txtCodigoProductoaBuscar.getText()))!=null) {
         				JOptionPane.showMessageDialog(null, "El producto Si existe");
         			}else {
         				JOptionPane.showMessageDialog(null, "El producto No existe");
         			}
-        			new GestionDeClientes().setVisible(true);
+        			new GestionDeInventario().setVisible(true);
         			dispose();
         		} else {
-        			JOptionPane.showMessageDialog(null, "ingrese la identificacion del cliente", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        			JOptionPane.showMessageDialog(null, "Por favor ingrese el código del producto a buscar", "Advertencia", JOptionPane.WARNING_MESSAGE);
         		}
         	}	
         });

@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import mascotas.Cliente;
+import mascotas.Mainn;
+import mascotas.Producto;
 import mascotas.centralMascota;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -251,7 +253,9 @@ public class AgregarNuevoProducto extends javax.swing.JFrame {
     	if(txtCodigoNuevoProducto.getText().isEmpty() || txtDescripcionNuevoProducto.getText().isEmpty() || txtNombreNuevoProducto.getText().isEmpty() || txtPresentacionNuevoProducto.getText().isEmpty() || txtUnidadesNuevoProducto.getText().isEmpty()) {
     		JOptionPane.showMessageDialog(null, "Recuerde que todos los campos son obligatorios","Advertencia", JOptionPane.WARNING_MESSAGE);
     	} else {
+    		Producto p = new Producto(Integer.valueOf(txtCodigoNuevoProducto.getText()), txtNombreNuevoProducto.getText(), txtDescripcionNuevoProducto.getText(), txtPresentacionNuevoProducto.getText(), Integer.valueOf(txtUnidadesNuevoProducto.getText()));
     		new GestionDeInventario().setVisible(true);
+    		Mainn.producto.insertarProducto(Mainn.producto.raiz, p);
     		this.dispose();
     	}    	
 }                                                          
